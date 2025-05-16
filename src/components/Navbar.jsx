@@ -5,8 +5,8 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg w-100">
       <div className="container-fluid">
         {/* Logo */}
-        <Link className="fs-2 fw-semibold pe-4" to="/">
-          <i className="fa-brands fa-airbnb"></i> VynyleShop
+        <Link className="fs-2 fw-semibold me-4 reset-a" to="/">
+          VynyleShop
         </Link>
 
         {/* Hamburger Menu */}
@@ -27,17 +27,29 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {/* Homepage */}
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/">
+              <NavLink
+                className="nav-link px-1 mx-1"
+                aria-current="page"
+                to="/"
+              >
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/vynil">
+              <NavLink
+                className="nav-link px-1 mx-1"
+                aria-current="page"
+                to="/vynil"
+              >
                 Vynils List
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/artist">
+              <NavLink
+                className="nav-link px-1 mx-1"
+                aria-current="page"
+                to="/artist"
+              >
                 Artists List
               </NavLink>
             </li>
