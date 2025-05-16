@@ -23,7 +23,7 @@ export default function HomePage() {
       </div>
       <div className="container">
         {/* NEW SECTION */}
-        <h2>New Vynils</h2>
+        <h2 className="text-center pt-4 pb-2">New Vynils</h2>
         <div className="row">
           {vynilList.map((vynil) => (
             <VynilCard key={vynil.id} vynil={vynil} />

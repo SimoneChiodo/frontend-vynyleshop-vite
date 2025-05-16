@@ -9,6 +9,27 @@
   background: linear-gradient(to bottom, transparent 0%, black 100%);
 }
 
+.text-max-2-lines {
+  /* Use Webkit for compatibility reason */
+  display: -webkit-box;
+  display: box;
+  -webkit-line-clamp: 2; /* Max 2 lines */
+  line-clamp: 2; /* Max 2 lines */
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* VYNIL CARD */
+.vynil-card {
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+.vynil-card:hover {
+  transform: scale(1.1);
+}
+
 /* HOMEPAGE */
 #jumbo {
   height: 60vh;

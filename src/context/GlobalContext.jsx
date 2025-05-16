@@ -31,13 +31,15 @@ export const GlobalProvider = ({ children }) => {
       token: VITE_VYNIL_IMAGES_API_TOKEN,
     });
 
-    const response = await fetch(`${VITE_VYNIL_IMAGES_API_URL}search?${query}`);
+    const response = await fetch(
+      `${VITE_VYNIL_IMAGES_API_URL}/database/search?${query}`
+    );
     const data = await response.json();
 
     let bestMatch = data.results.find((r) => isMatch(r, vynilName, artistName));
 
     if (!bestMatch && data.results.length > 0) {
-      bestMatch = data.results[0];
+      bestMatch = tmp;
     }
 
     return bestMatch?.cover_image || null;
