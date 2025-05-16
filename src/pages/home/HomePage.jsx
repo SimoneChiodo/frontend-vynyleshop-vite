@@ -1,5 +1,7 @@
 //Components
 import VynilCard from "../../components/VynilCard";
+
+//Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function HomePage() {
@@ -23,9 +25,8 @@ export default function HomePage() {
         {/* NEW SECTION */}
         <h2>New Vynils</h2>
         <div className="row">
-          {console.log(vynilList)}
           {vynilList.map((vynil) => (
-            <VynilCard vynil={vynil} />
+            <VynilCard key={vynil.id} vynil={vynil} />
           ))}
         </div>
       </div>
