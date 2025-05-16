@@ -5,3 +5,47 @@
 }
 
 /* UTILITIES */
+.fade-to-white {
+  background: linear-gradient(to bottom, transparent 0%, black 100%);
+}
+
+/* HOMEPAGE */
+#jumbo {
+  height: 60vh;
+}
+
+.jumbo-text {
+  padding-top: 30%;
+}
+
+.jumbo-text * {
+  z-index: 1;
+}
+
+.jumbo-img {
+  width: 80%;
+  left: 50%;
+  bottom: 0%;
+  transform: translate(-50%, 50%);
+}
+
+/* Resolution: SMALL */
+@media screen and (max-width: 768px) {
+  #jumbo {
+    max-height: 350px !important;
+  }
+}
+
+/* Resolution: MEDIUM */
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  #jumbo {
+    max-height: 500px !important;
+  }
+}
+
+/* Resolution: LARGE, + */
+@media screen and (min-width: 992px) {
+  #jumbo {
+    max-height: 800px !important;
+  }
+}
