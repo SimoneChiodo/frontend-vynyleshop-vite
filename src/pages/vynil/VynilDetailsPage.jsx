@@ -5,26 +5,9 @@ import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function VynilDetailsPage() {
-  const { fetchVynilImages, fetchVynil } = useGlobalContext();
-  const [imgUrl, setImgUrl] = useState(null);
+  const { fetchVynil } = useGlobalContext();
   const [vynil, setVynil] = useState(null);
   const { id } = useParams();
-
-  useEffect(() => {
-    if (!vynil) return;
-
-    async function loadImage() {
-      try {
-        const img = await fetchVynilImages(vynil.name, vynil.artistName);
-        setImgUrl(img);
-      } catch (error) {
-        console.error(error);
-        setImgUrl(null);
-      }
-    }
-
-    loadImage();
-  }, [vynil]);
 
   useEffect(() => {
     fetchVynil(id, setVynil);
@@ -43,7 +26,7 @@ export default function VynilDetailsPage() {
           <div className="vynil-image-description d-flex flex-column flex-md-row">
             <div className="img-container">
               <img
-                src={imgUrl || "assets/img/Vynil.png"} // Fallback image
+                src={vynil.image || "/assets/img/Vynil.png"} // Fallback image
                 alt="Vynil Cover"
                 className="img-fluid"
               />

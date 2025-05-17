@@ -1,35 +1,36 @@
 import { useEffect, useState } from "react";
 
+//Global Context
+import { useGlobalContext } from "../../context/GlobalContext";
+
 export default function ArtistListPage() {
-  const { VITE_BACKEND_API_URL } = import.meta.env;
-
-  let [artistList, setArtistList] = useState([]);
-
-  const fetchArtist = () => {
-    fetch(`${VITE_BACKEND_API_URL}/artist`)
-      .then((res) => res.json())
-      .then((data) => {
-        setArtistList(data);
-      });
-  };
-
-  useEffect(() => {
-    fetchArtist();
-  }, []);
+  const { artistList } = useGlobalContext();
 
   return (
-    <>
-      <div className="container">
-        <h1>ArtistListPage</h1>
+    <div className="container">
+      <h1>Artist List</h1>
 
-        <ul>
-          {artistList.map((artist) => (
-            <li key={artist.id}>
-              <a href={`/artist/${artist.id}`}>{artist.name}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+      {artistList.map((artist) => (
+        <div className="my-4" key={artist.id}>
+          <div>
+            <img
+              src={
+                artist.image || "assets/img/Vynil.png" // Fallback image
+              }
+              alt={"Artist Image"}
+              className="img_fluid"
+            />
+            <div className="text-center">
+              <a
+                href={`/artist/${artist.id}`}
+                className="reset-a fs-5 fw-semibold"
+              >
+                {artist.name}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

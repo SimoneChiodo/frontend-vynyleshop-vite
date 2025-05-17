@@ -5,14 +5,9 @@ const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
 
 export const GlobalProvider = ({ children }) => {
-  const {
-    VITE_BACKEND_API_URL,
-    VITE_VYNIL_IMAGES_API_URL,
-    VITE_VYNIL_IMAGES_API_TOKEN,
-  } = import.meta.env;
+  const { VITE_BACKEND_API_URL } = import.meta.env;
 
   let [vynilList, setVynilList] = useState([]);
-  let [vynilShow, setVynilShow] = useState([]);
   let [artistList, setArtistList] = useState([]);
 
   // VYNILS INDEX
@@ -22,28 +17,6 @@ export const GlobalProvider = ({ children }) => {
       .then((data) => {
         setVynilList(data);
       });
-  };
-
-  // VYNIL IMAGE
-  const fetchVynilImages = async (vynilName, artistName) => {
-    const query = new URLSearchParams({
-      q: `${vynilName} ${artistName}`,
-      type: "release",
-      token: VITE_VYNIL_IMAGES_API_TOKEN,
-    });
-
-    const response = await fetch(
-      `${VITE_VYNIL_IMAGES_API_URL}/database/search?${query}`
-    );
-    const data = await response.json();
-
-    let bestMatch = data.results.find((r) => isMatch(r, vynilName, artistName));
-
-    if (!bestMatch && data.results.length > 0) {
-      bestMatch = tmp;
-    }
-
-    return bestMatch?.cover_image || null;
   };
 
   // VYNILS SHOW
@@ -70,27 +43,10 @@ export const GlobalProvider = ({ children }) => {
     fetchArtist();
   }, []);
 
-  // Function to normalize the text (covert to lowercase and remove special characters)
-  function normalize(text) {
-    return text
-      .toLowerCase()
-      .replace(/[\W_]+/g, " ")
-      .trim();
-  }
-
-  // Function to check if the title contains both the vynil name and artist name. It's used in fetchVynilImages()
-  function isMatch(result, vynilName, artistName) {
-    const title = normalize(result.title);
-    const normVynil = normalize(vynilName);
-    const normArtist = normalize(artistName);
-    return title.includes(normVynil) && title.includes(normArtist);
-  }
-
   return (
     <GlobalContext.Provider
       value={{
         vynilList,
-        fetchVynilImages,
         fetchVynil,
         artistList,
       }}

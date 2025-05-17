@@ -5,22 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 export default function VynilCard({ vynil }) {
-  const { fetchVynilImages } = useGlobalContext();
-  const [imgUrl, setImgUrl] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    async function loadImage() {
-      try {
-        const img = await fetchVynilImages(vynil.name, vynil.artistName);
-        setImgUrl(img);
-      } catch (error) {
-        console.error(error);
-        setImgUrl(null);
-      }
-    }
-    loadImage();
-  }, [vynil.name, vynil.artistName]);
 
   return (
     <>
@@ -30,7 +15,7 @@ export default function VynilCard({ vynil }) {
           onClick={() => navigate("/vynil/" + vynil.id)}
         >
           <img
-            src={imgUrl || "assets/img/Vynil.png"} // Fallback image
+            src={vynil.image || "assets/img/Vynil.png"} // Fallback image
             className="card-img-top"
             alt="Vynil Cover"
             draggable="false"
