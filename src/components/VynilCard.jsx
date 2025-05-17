@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Global Context
 import { useGlobalContext } from "../context/GlobalContext";
@@ -6,6 +7,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 export default function VynilCard({ vynil }) {
   const { fetchVynilImages } = useGlobalContext();
   const [imgUrl, setImgUrl] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadImage() {
@@ -23,7 +25,10 @@ export default function VynilCard({ vynil }) {
   return (
     <>
       <div className="col-12 col-md-6 col-lg-4 col-xl-3">
-        <div className="card vynil-card h-100">
+        <div
+          className="card vynil-card hover_pointer h-100"
+          onClick={() => navigate("/vynil/" + vynil.id)}
+        >
           <img
             src={imgUrl || "assets/img/Vynil.png"} // Fallback image
             className="card-img-top"
@@ -39,16 +44,16 @@ export default function VynilCard({ vynil }) {
               <p className="card-text text-center m-0">by</p>
               <a
                 href={"/artist/" + vynil.artistId}
-                className="reset-a fs-5 fw-semibold card-text text-max-2-lines text-center"
+                className="reset-a hover_underline fs-5 fw-semibold card-text text-max-2-lines text-center"
               >
                 {vynil.artistName}
               </a>
             </div>
 
-            <div className="vynil-card-buttons w-100 d-flex justify-content-between align-items-end">
-              <a href={"/vynil/" + vynil.id} className="btn btn-primary my-2">
-                View Details
-              </a>
+            <div className="vynil-card-buttons w-100 d-flex justify-content-center align-items-end">
+              {/* <a href={"/vynil/" + vynil.id} className="btn btn-primary my-2">
+                  View Details
+                </a> */}
 
               <a href="#" className="btn btn-success align-self-end my-2">
                 Add to Cart

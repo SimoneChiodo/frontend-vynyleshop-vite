@@ -1,8 +1,8 @@
-//Components
-import VynilCard from "../../components/VynilCard";
-
 //Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
+
+//Components
+import VynilCard from "../../components/VynilCard";
 
 export default function HomePage() {
   const { vynilList } = useGlobalContext();

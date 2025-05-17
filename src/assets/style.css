@@ -3,9 +3,6 @@
   text-decoration: none;
   color: inherit;
 }
-.reset-a:hover {
-  text-decoration: underline;
-}
 
 .reset-ul {
   list-style: none;
@@ -14,6 +11,14 @@
 }
 
 /* UTILITIES */
+.hover_underline:hover {
+  text-decoration: underline;
+}
+
+.hover_pointer {
+  cursor: pointer;
+}
+
 .fs-1_1 {
   font-size: 1.1rem;
 }
