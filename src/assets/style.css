@@ -18,6 +18,11 @@
   font-size: 1.1rem;
 }
 
+.back-button {
+  left: -5px;
+  top: 10%;
+}
+
 .fade-to-white {
   background: linear-gradient(to bottom, transparent 0%, black 100%);
 }

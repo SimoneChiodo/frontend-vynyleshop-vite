@@ -31,6 +31,7 @@ export default function Navbar() {
                 className="nav-link px-1 mx-1"
                 aria-current="page"
                 to="/"
+                end
               >
                 Home
               </NavLink>
@@ -40,6 +41,7 @@ export default function Navbar() {
                 className="nav-link px-1 mx-1"
                 aria-current="page"
                 to="/vynil"
+                end
               >
                 Vynils List
               </NavLink>
@@ -49,6 +51,7 @@ export default function Navbar() {
                 className="nav-link px-1 mx-1"
                 aria-current="page"
                 to="/artist"
+                end
               >
                 Artists List
               </NavLink>

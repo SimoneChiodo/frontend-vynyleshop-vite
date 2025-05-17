@@ -34,6 +34,12 @@ export default function VynilDetailsPage() {
     <>
       {vynil ? (
         <div className="container vynil-show">
+          <a href="/vynil" className="reset-a">
+            <div className="back-button rounded-end position-absolute card py-2 ps-3 pe-3">
+              🔙
+            </div>
+          </a>
+
           <div className="vynil-image-description d-flex flex-column flex-md-row">
             <div className="img-container">
               <img
