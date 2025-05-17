@@ -12,6 +12,7 @@ export const GlobalProvider = ({ children }) => {
   } = import.meta.env;
 
   let [vynilList, setVynilList] = useState([]);
+  let [vynilShow, setVynilShow] = useState([]);
   let [artistList, setArtistList] = useState([]);
 
   // VYNILS INDEX
@@ -43,6 +44,15 @@ export const GlobalProvider = ({ children }) => {
     }
 
     return bestMatch?.cover_image || null;
+  };
+
+  // VYNILS SHOW
+  const fetchVynil = (vynilId, setVynil) => {
+    fetch(`${VITE_BACKEND_API_URL}/vynil/${vynilId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setVynil(data);
+      });
   };
 
   // ARTISTS INDEX
@@ -81,6 +91,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         vynilList,
         fetchVynilImages,
+        fetchVynil,
         artistList,
       }}
     >

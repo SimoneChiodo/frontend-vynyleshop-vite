@@ -31,16 +31,21 @@ export default function VynilCard({ vynil }) {
             draggable="false"
           />
 
-          <div className="card-body d-flex flex-column align-items-center pb-2">
-            <h4 className="card-title text-max-2-lines text-center m-0">
-              {vynil.name}
-            </h4>
-            <p className="card-text text-center m-0">by</p>
-            <h5 className="card-text text-max-2-lines text-center">
-              {vynil.artistName}
-            </h5>
+          <div className="card-body d-flex flex-column align-items-center pt-0 pb-2">
+            <div className="w-100 d-flex justify-content-center align-items-center flex-column flex-grow-1 py-2">
+              <h4 className="card-title text-max-2-lines text-center m-0">
+                {vynil.name}
+              </h4>
+              <p className="card-text text-center m-0">by</p>
+              <a
+                href={"/artist/" + vynil.artistId}
+                className="reset-a fs-5 fw-semibold card-text text-max-2-lines text-center"
+              >
+                {vynil.artistName}
+              </a>
+            </div>
 
-            <div className="vynil-card-buttons w-100 d-flex justify-content-between align-items-end flex-grow-1">
+            <div className="vynil-card-buttons w-100 d-flex justify-content-between align-items-end">
               <a href={"/vynil/" + vynil.id} className="btn btn-primary my-2">
                 View Details
               </a>
