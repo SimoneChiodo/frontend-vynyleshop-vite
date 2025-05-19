@@ -67,18 +67,34 @@ export default function VynilDetailsPage() {
             </div>
           </div>
 
-          <div className="vynil-tracklist mt-4">
-            <h2 className="mb-3">Tracklist</h2>
-            <ul className="pointed-ul fs-1_1 ps-1">
-              {Array.isArray(vynil.tracklist) &&
-                vynil.tracklist.map((track, index) => (
-                  <li key={index} className="pointed-li">
-                    <span className="line"></span>
-                    <span className="point"></span>
-                    <div className="blob ">{track}</div>
-                  </li>
-                ))}
-            </ul>
+          <h2 className="mb-1">Tracklist</h2>
+          <div className="vynil-tracklist d-flex flex-column flex-lg-row">
+            <div className="side-one flex-grow-1">
+              <h2 className="text-center">Side one</h2>
+              <ul className="pointed-ul fs-1_1 ps-1">
+                {Array.isArray(vynil.sideone) &&
+                  vynil.sideone.map((track, index) => (
+                    <li key={index} className="pointed-li">
+                      <span className="line"></span>
+                      <span className="point"></span>
+                      <div className="blob ">{track}</div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div className="side-two flex-grow-1">
+              <h2 className="text-center">Side two</h2>
+              <ul className="pointed-ul fs-1_1 ps-1">
+                {Array.isArray(vynil.sidetwo) &&
+                  vynil.sidetwo.map((track, index) => (
+                    <li key={index} className="pointed-li">
+                      <span className="line"></span>
+                      <span className="point"></span>
+                      <div className="blob ">{track}</div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           </div>
         </div>
       ) : (
