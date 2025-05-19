@@ -10,6 +10,36 @@
   margin: 0;
 }
 
+/* RESET BOOTSTRAP */
+.carousel-item {
+  transition: transform 0s; /* Slide duration */
+}
+
+#carouselIndicators .carousel-indicators.custom-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  position: static;
+  height: auto;
+}
+
+#carouselIndicators .carousel-indicators.custom-thumbnails button {
+  width: 18%;
+  height: 18%;
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#carouselIndicators .carousel-indicators.custom-thumbnails img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* UTILITIES */
 .hover_underline:hover {
   text-decoration: underline;
@@ -55,35 +85,31 @@
 
 /* HOMEPAGE */
 #jumbo {
-  height: 60vh;
+  max-height: 350px !important;
 }
 
-.jumbo-text {
-  padding-top: 30%;
-}
-
-.jumbo-text * {
+/* .jumbo-text * {
   z-index: 1;
-}
+} */
 
-.jumbo-img {
+/* .jumbo-img {
   width: 80%;
   left: 50%;
   bottom: 0%;
   transform: translate(-50%, 50%);
-}
+} */
 
-/* Resolution: SMALL */
-@media screen and (max-width: 768px) {
-  #jumbo {
-    max-height: 350px !important;
-  }
-}
-
+/* RESPONSIVE: MOBILE FIRST */
 /* Resolution: MEDIUM */
-@media screen and (min-width: 768px) and (max-width: 992px) {
+@media screen and (min-width: 768px) {
   #jumbo {
     max-height: 500px !important;
+  }
+
+  /* VYNIL DETAILS PAGE */
+  .vynil-image-description .img-container #carouselIndicators {
+    min-width: 90% !important;
+    max-width: 90% !important;
   }
 }
 
@@ -91,5 +117,11 @@
 @media screen and (min-width: 992px) {
   #jumbo {
     max-height: 800px !important;
+  }
+
+  /* VYNIL DETAILS PAGE */
+  .vynil-image-description .img-container {
+    min-width: 55% !important;
+    max-width: 55% !important;
   }
 }

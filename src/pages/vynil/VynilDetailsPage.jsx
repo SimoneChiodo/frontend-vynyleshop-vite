@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-//Global Context
+// Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
+
+// Components
+import ImageCarousel from "../../components/ImageCarousel";
 
 export default function VynilDetailsPage() {
   const { fetchVynil } = useGlobalContext();
@@ -18,27 +21,26 @@ export default function VynilDetailsPage() {
       {vynil ? (
         <div className="container vynil-show">
           <a href="/vynil" className="reset-a">
-            <div className="back-button rounded-end position-absolute card py-2 ps-3 pe-3">
+            <div className="back-button rounded-end position-absolute card py-2 ps-3 pe-3 z-3">
               🔙
             </div>
           </a>
 
-          <div className="vynil-image-description d-flex flex-column flex-md-row">
-            <div className="img-container">
-              <img
-                src={vynil.images?.[0] || "/assets/img/Vynil.png"} // Fallback image
-                alt="Vynil Cover"
-                className="img-fluid"
-              />
+          <div className="vynil-image-description d-flex flex-column flex-lg-row">
+            <div className="img-container d-flex justify-content-center">
+              <ImageCarousel images={vynil.images} />
             </div>
 
             <div className="py-3 py-md-0 px-4">
-              <div className="">
+              <div className="vynil-details">
                 <h2 className="mb-2">{vynil.name}</h2>
 
                 <h3>
                   Author:{" "}
-                  <a href={"/artist/" + vynil.artistId} className="reset-a">
+                  <a
+                    href={"/artist/" + vynil.artistId}
+                    className="reset-a hover_underline"
+                  >
                     {vynil.artistName}
                   </a>
                 </h3>
@@ -57,7 +59,7 @@ export default function VynilDetailsPage() {
                 </ul>
               </div>
 
-              <div className="">
+              <div className="vynil-buttons">
                 <a href="#" className="btn btn-success align-self-end my-2">
                   Add to Cart 🛒
                 </a>
