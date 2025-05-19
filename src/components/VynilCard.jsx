@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 //Global Context
 import { useGlobalContext } from "../context/GlobalContext";
@@ -27,22 +27,22 @@ export default function VynilCard({ vynil }) {
                 {vynil.name}
               </h4>
               <p className="card-text text-center m-0">by</p>
-              <a
+              <Link
                 href={"/artist/" + vynil.artistId}
                 className="reset-a hover_underline fs-5 fw-semibold card-text text-max-2-lines text-center"
               >
                 {vynil.artistName}
-              </a>
+              </Link>
             </div>
 
             <div className="vynil-card-buttons w-100 d-flex justify-content-center align-items-end">
-              {/* <a href={"/vynil/" + vynil.id} className="btn btn-primary my-2">
+              {/* <Link to={"/vynil/" + vynil.id} className="btn btn-primary my-2">
                   View Details
-                </a> */}
+                </Link> */}
 
-              <a href="#" className="btn btn-success align-self-end my-2">
+              <Link to="#" className="btn btn-success align-self-end my-2">
                 Add to Cart
-              </a>
+              </Link>
             </div>
           </div>
         </div>

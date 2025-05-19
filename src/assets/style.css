@@ -1,3 +1,7 @@
+:root {
+  --artist-photo-background-color: lightblue;
+}
+
 /***************
     RESET 
  ***************/
@@ -81,6 +85,20 @@
 .back-button {
   left: -5px;
   top: 10%;
+}
+
+/* Artist Photo */
+.artist-photo-container {
+  width: 90%;
+}
+
+.artist-photo {
+  border: 20px solid var(--artist-photo-background-color);
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.artist-photo:hover {
+  rotate: 2deg;
 }
 
 /* Vynil Card */
@@ -169,6 +187,12 @@ div.blob {
   .vynil-image-description .img-container #carouselIndicators {
     min-width: 90% !important;
     max-width: 90% !important;
+  }
+
+  /* Artist Photo */
+  .artist-photo-container {
+    width: 60%;
+    min-width: 60%;
   }
 }
 

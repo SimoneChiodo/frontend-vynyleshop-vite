@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 // Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
@@ -20,11 +20,11 @@ export default function VynilDetailsPage() {
     <>
       {vynil ? (
         <div className="container vynil-show">
-          <a href="/vynil" className="reset-a">
+          <Link to="/vynil" className="reset-a">
             <div className="back-button rounded-end position-absolute card py-2 ps-3 pe-3 z-3">
               🔙
             </div>
-          </a>
+          </Link>
 
           <div className="vynil-image-description d-flex flex-column flex-lg-row">
             <div className="img-container d-flex justify-content-center">
@@ -37,12 +37,12 @@ export default function VynilDetailsPage() {
 
                 <h3>
                   Author:{" "}
-                  <a
-                    href={"/artist/" + vynil.artistId}
+                  <Link
+                    to={"/artist/" + vynil.artistId}
                     className="reset-a hover_underline"
                   >
                     {vynil.artistName}
-                  </a>
+                  </Link>
                 </h3>
 
                 <h3 className="mb-4">Year: {vynil.releaseYear}</h3>
@@ -60,16 +60,16 @@ export default function VynilDetailsPage() {
               </div>
 
               <div className="vynil-buttons">
-                <a href="#" className="btn btn-success align-self-end my-2">
+                <Link to="#" className="btn btn-success align-self-end my-2">
                   Add to Cart 🛒
-                </a>
+                </Link>
               </div>
             </div>
           </div>
 
-          <h2 className="mb-1">Tracklist</h2>
+          <h2 className="mb-0">Tracklist</h2>
           <div className="vynil-tracklist d-flex flex-column flex-lg-row">
-            <div className="side-one flex-grow-1">
+            <div className="side-one flex-grow-1 mt-2 m-lg-0">
               <h2 className="text-center">Side one</h2>
               <ul className="pointed-ul fs-1_1 ps-1">
                 {Array.isArray(vynil.sideone) &&
@@ -82,7 +82,7 @@ export default function VynilDetailsPage() {
                   ))}
               </ul>
             </div>
-            <div className="side-two flex-grow-1">
+            <div className="side-two flex-grow-1 mt-3 m-lg-0">
               <h2 className="text-center">Side two</h2>
               <ul className="pointed-ul fs-1_1 ps-1">
                 {Array.isArray(vynil.sidetwo) &&
