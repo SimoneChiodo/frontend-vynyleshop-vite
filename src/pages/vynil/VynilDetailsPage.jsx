@@ -69,11 +69,13 @@ export default function VynilDetailsPage() {
 
           <div className="vynil-tracklist mt-4">
             <h2 className="mb-3">Tracklist</h2>
-            <ul className="reset-ul fs-1_1">
+            <ul className="pointed-ul fs-1_1 ps-1">
               {Array.isArray(vynil.tracklist) &&
                 vynil.tracklist.map((track, index) => (
-                  <li key={index}>
-                    <span className="fw-semibold">{index + 1}</span>- {track}
+                  <li key={index} className="pointed-li">
+                    <span className="line"></span>
+                    <span className="point"></span>
+                    <div className="blob ">{track}</div>
                   </li>
                 ))}
             </ul>

@@ -1,4 +1,6 @@
-/* RESET */
+/***************
+    RESET 
+ ***************/
 .reset-a {
   text-decoration: none;
   color: inherit;
@@ -40,7 +42,10 @@
   object-fit: cover;
 }
 
-/* UTILITIES */
+/***************
+    UTILITIES 
+ ***************/
+/* Hover Effects */
 .hover_underline:hover {
   text-decoration: underline;
 }
@@ -49,19 +54,17 @@
   cursor: pointer;
 }
 
-.fs-1_1 {
-  font-size: 1.1rem;
-}
-
-.back-button {
-  left: -5px;
-  top: 10%;
-}
-
+/* Background */
 .fade-to-white {
   background: linear-gradient(to bottom, transparent 0%, black 100%);
 }
 
+/* Font Sizes */
+.fs-1_1 {
+  font-size: 1.1rem;
+}
+
+/* Text */
 .text-max-2-lines {
   /* Use Webkit for compatibility reason */
   display: -webkit-box;
@@ -74,7 +77,13 @@
   text-overflow: ellipsis;
 }
 
-/* VYNIL CARD */
+/* Back Button */
+.back-button {
+  left: -5px;
+  top: 10%;
+}
+
+/* Vynil Card */
 .vynil-card {
   transform: scale(1);
   transition: all 0.3s ease-in-out;
@@ -83,7 +92,55 @@
   transform: scale(1.1);
 }
 
-/* HOMEPAGE */
+/* Pointed List */
+.pointed-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pointed-li {
+  display: flex;
+  flex-flow: row;
+  min-height: 50px;
+  position: relative;
+  align-items: flex-start;
+}
+
+span.point {
+  margin-top: 10px;
+  margin-right: 0.5rem;
+  text-align: center;
+  width: 0.6em;
+  height: 0.6em;
+  background-color: rgb(40, 40, 40);
+  border-radius: 50%;
+  z-index: 1;
+  line-height: 1em;
+  color: whitesmoke;
+  font-weight: bold;
+  position: relative;
+}
+
+span.line {
+  position: absolute;
+  top: 1em;
+  left: 0.25em;
+  height: 100%;
+  border-left: 2px solid rgb(40, 40, 40);
+}
+
+.pointed-li:last-child span.line {
+  display: none;
+}
+
+div.blob {
+  flex: 1;
+}
+
+/***************
+    HOMEPAGE
+ ***************/
 #jumbo {
   max-height: 350px !important;
 }
@@ -99,7 +156,9 @@
   transform: translate(-50%, 50%);
 } */
 
-/* RESPONSIVE: MOBILE FIRST */
+/******************************
+    RESPONSIVE: MOBILE FIRST 
+ ******************************/
 /* Resolution: MEDIUM */
 @media screen and (min-width: 768px) {
   #jumbo {
