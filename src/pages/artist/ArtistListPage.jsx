@@ -15,7 +15,7 @@ export default function ArtistListPage() {
           <div>
             <img
               src={
-                artist.image || "assets/img/Vynil.png" // Fallback image
+                artist.images?.[0] || "assets/img/Vynil.png" // Fallback image
               }
               alt={"Artist Image"}
               className="img_fluid"

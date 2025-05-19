@@ -15,7 +15,7 @@ export default function VynilCard({ vynil }) {
           onClick={() => navigate("/vynil/" + vynil.id)}
         >
           <img
-            src={vynil.image || "assets/img/Vynil.png"} // Fallback image
+            src={vynil.images?.[0] || "assets/img/Vynil.png"} // Fallback image
             className="card-img-top"
             alt="Vynil Cover"
             draggable="false"

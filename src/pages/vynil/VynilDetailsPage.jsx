@@ -26,7 +26,7 @@ export default function VynilDetailsPage() {
           <div className="vynil-image-description d-flex flex-column flex-md-row">
             <div className="img-container">
               <img
-                src={vynil.image || "/assets/img/Vynil.png"} // Fallback image
+                src={vynil.images?.[0] || "/assets/img/Vynil.png"} // Fallback image
                 alt="Vynil Cover"
                 className="img-fluid"
               />
