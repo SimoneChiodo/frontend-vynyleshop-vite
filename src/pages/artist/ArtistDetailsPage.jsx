@@ -31,22 +31,9 @@ export default function ArtistDetailsPage() {
         </div>
       </div>
 
-      <ul className="pointed-ul fs-1_1 ps-1">
-        <li className="pointed-li">
-          <span className="line"></span>
-          <span className="point"></span>
-          <div className="blob ">Ciao1</div>
-        </li>
-        <li className="pointed-li">
-          <span className="line"></span>
-          <span className="point"></span>
-          <div className="blob ">Ciao2</div>
-        </li>
-      </ul>
-
       {/* Discography */}
       <div>
-        <h2 className="mb-4">Discography</h2>
+        <h2 className="mb-3">Available vinyls:</h2>
         <Discography vynils={artist.vynils} />
       </div>
     </div>

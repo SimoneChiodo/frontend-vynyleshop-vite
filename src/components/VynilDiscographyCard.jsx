@@ -6,29 +6,24 @@ export default function VynilDiscographyCard({ vynil, isList, isLast }) {
 
   return (
     <div className={`col ${styles.pointedListItem}`}>
-      <div
-        className="card hover_pointer"
+      <img
+        src={vynil.images?.[0] || "assets/img/Vynil.png"}
+        className="img-fluid hover_pointer"
+        onClick={() => navigate("/vynil/" + vynil.id)}
+        alt="Vynil Cover"
+        draggable="false"
+      />
+
+      <h4
+        className="text-center hover_pointer m-0 pt-2 w-100 h-100"
         onClick={() => navigate("/vynil/" + vynil.id)}
       >
-        <img
-          src={vynil.images?.[0] || "assets/img/Vynil.png"}
-          className="card-img-top"
-          alt="Vynil Cover"
-          draggable="false"
-        />
-        <div className="card-body d-flex flex-column align-items-center pt-0 pb-2">
-          <div className="w-100 d-flex justify-content-center align-items-center flex-column flex-grow-1 py-2">
-            <h4 className="card-title text-center m-0">{vynil.name}</h4>
-            <p className="card-text text-center m-0">by</p>
-            <Link
-              to={"/artist/" + vynil.artistId}
-              className="reset-a hover_underline fs-5 fw-semibold card-text text-center"
-            >
-              {vynil.artistName}
-            </Link>
-          </div>
-        </div>
-      </div>
+        {vynil.name}
+      </h4>
+
+      <p className="fs-5 text-center hover_pointer m-0 pt-2 w-100">
+        {vynil.releaseYear}
+      </p>
 
       {isList && (
         <>
