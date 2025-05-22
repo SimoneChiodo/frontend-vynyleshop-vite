@@ -29,7 +29,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   // ARTISTS INDEX
-  const fetchArtist = () => {
+  const fetchArtists = () => {
     fetch(`${VITE_BACKEND_API_URL}/artist`)
       .then((res) => res.json())
       .then((data) => {
@@ -37,10 +37,19 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
+  // ARTISTS SHOW
+  const fetchArtist = (artistId, setArtist) => {
+    fetch(`${VITE_BACKEND_API_URL}/artist/${artistId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setArtist(data);
+      });
+  };
+
   // Initialize the data
   useEffect(() => {
     fetchVynils();
-    fetchArtist();
+    fetchArtists();
   }, []);
 
   return (
@@ -49,6 +58,7 @@ export const GlobalProvider = ({ children }) => {
         vynilList,
         fetchVynil,
         artistList,
+        fetchArtist,
       }}
     >
       {children}

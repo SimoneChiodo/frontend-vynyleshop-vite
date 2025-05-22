@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 
-export default function VynilCard({ vynil }) {
+export default function VynilDiscographyCard({ vynil }) {
   const navigate = useNavigate();
 
   return (
@@ -28,12 +28,6 @@ export default function VynilCard({ vynil }) {
                 className="reset-a hover_underline fs-5 fw-semibold card-text text-max-2-lines text-center"
               >
                 {vynil.artistName}
-              </Link>
-            </div>
-
-            <div className="vynil-card-buttons w-100 d-flex justify-content-center align-items-end">
-              <Link to="#" className="btn btn-success align-self-end my-2">
-                Add to Cart
               </Link>
             </div>
           </div>

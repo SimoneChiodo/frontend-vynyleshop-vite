@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 //Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
 
