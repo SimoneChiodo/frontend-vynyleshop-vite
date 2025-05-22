@@ -6,7 +6,34 @@ export default function ArtistListPage() {
 
   return (
     <div className="container">
-      <h1>Artist List</h1>
+      <div className="title-and-filters pb-3">
+        <div className="d-flex justify-content-between align-items-center pb-1">
+          <h1 className="m-0">Artists List</h1>
+
+          <button
+            class="btn btn-outline-primary py-2 px-4"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFilter"
+            aria-expanded="true"
+            aria-controls="collapseFilter"
+          >
+            Filters
+          </button>
+        </div>
+
+        <div class="accordion" id="accordionFilter">
+          <div class="accordion-item">
+            <div
+              id="collapseFilter"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFilter"
+            >
+              <div class="accordion-body">Filters</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {artistList.map((artist, index) => (
         <div className={`mb-5 w-100`} key={artist.id}>
