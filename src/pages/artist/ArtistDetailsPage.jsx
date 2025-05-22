@@ -3,7 +3,7 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import { useParams } from "react-router-dom";
 
 // Components
-import VynilDiscographyCard from "../../components/VynilDiscographyCard";
+import Discography from "../../components/Discography";
 
 export default function ArtistDetailsPage() {
   const { fetchArtist } = useGlobalContext();
@@ -31,14 +31,23 @@ export default function ArtistDetailsPage() {
         </div>
       </div>
 
+      <ul className="pointed-ul fs-1_1 ps-1">
+        <li className="pointed-li">
+          <span className="line"></span>
+          <span className="point"></span>
+          <div className="blob ">Ciao1</div>
+        </li>
+        <li className="pointed-li">
+          <span className="line"></span>
+          <span className="point"></span>
+          <div className="blob ">Ciao2</div>
+        </li>
+      </ul>
+
       {/* Discography */}
       <div>
         <h2 className="mb-4">Discography</h2>
-        <div className="row">
-          {artist.vynils.map((vynil) => (
-            <VynilDiscographyCard key={vynil.id} vynil={vynil} />
-          ))}
-        </div>
+        <Discography vynils={artist.vynils} />
       </div>
     </div>
   ) : (
