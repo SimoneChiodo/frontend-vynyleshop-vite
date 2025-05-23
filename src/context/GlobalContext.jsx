@@ -19,6 +19,25 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
+  // VYNILS FILTERED
+  const fetchFilteredVynils = (filters, setFilteredVynils) => {
+    // NOTE: Type URLSearchParams automatically convert special characters
+    const params = new URLSearchParams();
+
+    if (filters.name) params.append("name", filters.name);
+    if (filters.artist) params.append("artist", filters.artist);
+    if (filters.releaseYear) params.append("releaseYear", filters.releaseYear);
+    if (filters.available !== undefined)
+      params.append("available", filters.available);
+    if (filters.format) params.append("format", filters.format);
+
+    fetch(`${VITE_BACKEND_API_URL}/vynil/filter?${params.toString()}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFilteredVynils(data);
+      });
+  };
+
   // VYNILS SHOW
   const fetchVynil = (vynilId, setVynil) => {
     fetch(`${VITE_BACKEND_API_URL}/vynil/${vynilId}`)
@@ -56,6 +75,7 @@ export const GlobalProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         vynilList,
+        fetchFilteredVynils,
         fetchVynil,
         artistList,
         fetchArtist,
