@@ -56,6 +56,20 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
+  // ARTISTS SEARCH
+  const fetchSearchArtist = (name, setSearchArtists) => {
+    // NOTE: Type URLSearchParams automatically convert special characters
+    const params = new URLSearchParams();
+
+    if (name) params.append("name", name);
+
+    fetch(`${VITE_BACKEND_API_URL}/artist/search?${params.toString()}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSearchArtists(data);
+      });
+  };
+
   // ARTISTS SHOW
   const fetchArtist = (artistId, setArtist) => {
     fetch(`${VITE_BACKEND_API_URL}/artist/${artistId}`)
@@ -78,6 +92,7 @@ export const GlobalProvider = ({ children }) => {
         fetchFilteredVynils,
         fetchVynil,
         artistList,
+        fetchSearchArtist,
         fetchArtist,
       }}
     >

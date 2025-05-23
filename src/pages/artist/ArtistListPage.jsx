@@ -1,8 +1,26 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+//Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function ArtistListPage() {
-  const { artistList } = useGlobalContext();
+  const { fetchSearchArtist } = useGlobalContext();
+  const [artistList, setArtistList] = useState([]);
+  const [name, setName] = useState("");
+
+  const loadArtists = () => {
+    fetchSearchArtist(name, setArtistList);
+  };
+
+  useEffect(() => {
+    loadArtists();
+  }, []);
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    loadArtists();
+  };
 
   return (
     <div className="container">
@@ -11,7 +29,7 @@ export default function ArtistListPage() {
           <h1 className="m-0">Artists List</h1>
 
           <button
-            class="btn btn-outline-primary py-2 px-4"
+            className="btn btn-outline-primary py-2 px-4"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseFilter"
@@ -22,14 +40,42 @@ export default function ArtistListPage() {
           </button>
         </div>
 
-        <div class="accordion" id="accordionFilter">
-          <div class="accordion-item">
+        <div className="accordion" id="accordionFilter">
+          <div className="accordion-item">
             <div
               id="collapseFilter"
-              class="accordion-collapse collapse"
+              className="accordion-collapse collapse"
               data-bs-parent="#accordionFilter"
             >
-              <div class="accordion-body">Filters</div>
+              <div className="accordion-body">
+                <form className="row g-3" onSubmit={handleOnSubmit}>
+                  {/* Name */}
+                  <div className="col">
+                    <label htmlFor="validationCustom01" className="form-label">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="validationCustom01"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="col-12 d-flex justify-content-center">
+                    <button
+                      className="btn btn-primary fs-5 px-5"
+                      type="submit"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFilter"
+                      aria-controls="collapseFilter"
+                    >
+                      Search
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>

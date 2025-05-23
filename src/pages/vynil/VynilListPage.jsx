@@ -1,9 +1,10 @@
+import { useState, useEffect } from "react";
+
 //Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
 
 //Components
 import VynilCard from "../../components/VynilCard";
-import { useState, useEffect } from "react";
 
 export default function VynilListPage() {
   const { fetchFilteredVynils } = useGlobalContext();
@@ -59,7 +60,7 @@ export default function VynilListPage() {
                 <div className="accordion-body">
                   <form className="row g-3" onSubmit={handleOnSubmit}>
                     {/* Name */}
-                    <div className="col">
+                    <div className="col-md-6">
                       <label
                         htmlFor="validationCustom01"
                         className="form-label"
@@ -75,7 +76,7 @@ export default function VynilListPage() {
                       />
                     </div>
                     {/* Artist */}
-                    <div className="col">
+                    <div className="col-md-6">
                       <label
                         htmlFor="validationCustom02"
                         className="form-label"
@@ -91,7 +92,7 @@ export default function VynilListPage() {
                       />
                     </div>
                     {/* ReleaseYear */}
-                    <div className="col">
+                    <div className="col-md-12 col-lg-4">
                       <label
                         htmlFor="validationCustom03"
                         className="form-label"
@@ -107,7 +108,7 @@ export default function VynilListPage() {
                       />
                     </div>
                     {/* Available */}
-                    <div className="col">
+                    <div className="col-md-6 col-lg-4">
                       <label
                         htmlFor="validationCustom04"
                         className="form-label"
@@ -126,7 +127,7 @@ export default function VynilListPage() {
                       </select>
                     </div>
                     {/* Format */}
-                    <div className="col">
+                    <div className="col-md-6 col-lg-4">
                       <label
                         htmlFor="validationCustom05"
                         className="form-label"
@@ -146,9 +147,9 @@ export default function VynilListPage() {
                       </select>
                     </div>
 
-                    <div className="col-12">
+                    <div className="col-12 d-flex justify-content-center">
                       <button
-                        className="btn btn-primary"
+                        className="btn btn-primary fs-5 px-5"
                         type="submit"
                         data-bs-toggle="collapse"
                         data-bs-target="#collapseFilter"
