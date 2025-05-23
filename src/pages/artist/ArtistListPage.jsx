@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function ArtistListPage() {
   const { fetchSearchArtist } = useGlobalContext();
+  const navigate = useNavigate();
   const [artistList, setArtistList] = useState([]);
+
   const [name, setName] = useState("");
 
   const loadArtists = () => {
-    fetchSearchArtist(name, setArtistList);
+    fetchSearchArtist(name, setArtistList, navigate);
   };
 
   useEffect(() => {

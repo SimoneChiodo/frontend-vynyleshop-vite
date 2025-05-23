@@ -10,8 +10,8 @@ import ImageCarousel from "../../components/ImageCarousel";
 export default function VynilDetailsPage() {
   const { fetchVynil } = useGlobalContext();
   const navigate = useNavigate();
-
   const [vynil, setVynil] = useState(null);
+
   const { id } = useParams();
 
   useEffect(() => {

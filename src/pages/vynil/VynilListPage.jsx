@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
@@ -8,7 +9,9 @@ import VynilCard from "../../components/VynilCard";
 
 export default function VynilListPage() {
   const { fetchFilteredVynils } = useGlobalContext();
+  const navigate = useNavigate();
   const [vynilList, setVynilList] = useState([]);
+
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
@@ -18,7 +21,8 @@ export default function VynilListPage() {
   const loadVynils = () => {
     fetchFilteredVynils(
       { name, artist, releaseYear, available, format },
-      setVynilList
+      setVynilList,
+      navigate
     );
   };
 

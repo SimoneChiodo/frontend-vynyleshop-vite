@@ -9,6 +9,7 @@ export default function ArtistDetailsPage() {
   const { fetchArtist } = useGlobalContext();
   const navigate = useNavigate();
   const [artist, setArtist] = useState(null);
+
   const { id } = useParams();
 
   useEffect(() => {

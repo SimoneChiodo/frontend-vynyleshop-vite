@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 //Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
 
@@ -5,7 +8,13 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import VynilCard from "../../components/VynilCard";
 
 export default function HomePage() {
-  const { vynilList } = useGlobalContext();
+  const { fetchVynils } = useGlobalContext();
+  const navigate = useNavigate();
+  const [vynilList, setVynilList] = useState([]);
+
+  useEffect(() => {
+    fetchVynils(setVynilList, navigate);
+  }, []);
 
   return (
     <>
