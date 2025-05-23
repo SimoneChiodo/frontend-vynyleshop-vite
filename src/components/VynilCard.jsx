@@ -31,8 +31,12 @@ export default function VynilCard({ vynil }) {
               </Link>
             </div>
 
+            <p className="fs-5 text-center hover_pointer m-0 mb-1">
+              {vynil.releaseYear}
+            </p>
+
             <div className="vynil-card-buttons w-100 d-flex justify-content-center align-items-end">
-              <Link to="#" className="btn btn-success align-self-end my-2">
+              <Link to="#" className="btn btn-success align-self-end mb-2">
                 Add to Cart
               </Link>
             </div>

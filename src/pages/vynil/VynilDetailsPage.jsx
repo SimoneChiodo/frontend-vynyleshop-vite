@@ -55,7 +55,6 @@ export default function VynilDetailsPage() {
                   <li>Color: {vynil.color}</li>
                   <li>Edition: {vynil.edition}</li>
                   <li>Label: {vynil.label}</li>
-                  <li>Code: {vynil.code}</li>
                 </ul>
               </div>
 
