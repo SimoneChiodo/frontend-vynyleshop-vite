@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/GlobalContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // Components
 import Discography from "../../components/Discography";
 
 export default function ArtistDetailsPage() {
   const { fetchArtist } = useGlobalContext();
+  const navigate = useNavigate();
   const [artist, setArtist] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    fetchArtist(id, setArtist);
+    fetchArtist(id, setArtist, navigate);
   }, [id]);
 
   return artist ? (

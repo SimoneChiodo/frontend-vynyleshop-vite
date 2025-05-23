@@ -12,6 +12,7 @@ import VynilListPage from "./pages/vynil/VynilListPage";
 import VynilDetailsPage from "./pages/vynil/VynilDetailsPage";
 import ArtistListPage from "./pages/artist/ArtistListPage";
 import ArtistDetailsPage from "./pages/artist/ArtistDetailsPage";
+import Error404 from "./pages/errors/error404";
 
 function App() {
   return (
@@ -25,7 +26,9 @@ function App() {
               <Route path="/vynil/:id" element={<VynilDetailsPage />}></Route>
               <Route path="/artist" element={<ArtistListPage />}></Route>
               <Route path="/artist/:id" element={<ArtistDetailsPage />}></Route>
-              <Route path="*" element={""}></Route>
+
+              {/* Error 404 */}
+              <Route path="*" element={<Error404 />} />
             </Route>
           </Routes>
         </BrowserRouter>

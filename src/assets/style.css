@@ -55,6 +55,11 @@
 /***************
     UTILITIES 
  ***************/
+/* Main */
+#wrapper {
+  height: 100vh;
+}
+
 /* Hover Effects */
 .hover_underline:hover {
   text-decoration: underline;

@@ -39,11 +39,14 @@ export const GlobalProvider = ({ children }) => {
   };
 
   // VYNILS SHOW
-  const fetchVynil = (vynilId, setVynil) => {
+  const fetchVynil = (vynilId, setVynil, navigate) => {
     fetch(`${VITE_BACKEND_API_URL}/vynil/${vynilId}`)
       .then((res) => res.json())
       .then((data) => {
         setVynil(data);
+      })
+      .catch(() => {
+        navigate("/404");
       });
   };
 
@@ -71,11 +74,14 @@ export const GlobalProvider = ({ children }) => {
   };
 
   // ARTISTS SHOW
-  const fetchArtist = (artistId, setArtist) => {
+  const fetchArtist = (artistId, setArtist, navigate) => {
     fetch(`${VITE_BACKEND_API_URL}/artist/${artistId}`)
       .then((res) => res.json())
       .then((data) => {
         setArtist(data);
+      })
+      .catch(() => {
+        navigate("/404");
       });
   };
 

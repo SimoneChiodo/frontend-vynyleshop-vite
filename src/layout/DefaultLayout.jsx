@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 export default function DefaultLayout() {
   return (
     <>
-      <div className="wrapper d-flex flex-column">
+      <div id="wrapper" className="d-flex flex-column">
         <header>
           <Navbar />
         </header>

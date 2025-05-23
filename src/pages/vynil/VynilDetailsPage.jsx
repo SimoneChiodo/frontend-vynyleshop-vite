@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 // Global Context
 import { useGlobalContext } from "../../context/GlobalContext";
@@ -9,11 +9,13 @@ import ImageCarousel from "../../components/ImageCarousel";
 
 export default function VynilDetailsPage() {
   const { fetchVynil } = useGlobalContext();
+  const navigate = useNavigate();
+
   const [vynil, setVynil] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    fetchVynil(id, setVynil);
+    fetchVynil(id, setVynil, navigate);
   }, [id]);
 
   return (
