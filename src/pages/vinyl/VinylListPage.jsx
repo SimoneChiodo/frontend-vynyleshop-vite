@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 //Components
-import VinylCard from "../../components/VinylCard";
+import VinylList from "../../components/VinylList";
 
 export default function VinylListPage() {
   const { fetchFilteredVinyls } = useGlobalContext();
@@ -171,9 +171,7 @@ export default function VinylListPage() {
         </div>
 
         <div className="row g-3">
-          {vinylList.map((vinyl) => (
-            <VinylCard key={vinyl.id} vinyl={vinyl} />
-          ))}
+          <VinylList vinylList={vinylList} />
         </div>
       </div>
     </>

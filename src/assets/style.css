@@ -142,6 +142,17 @@
   transition: all 0.3s ease-in-out;
 }
 
+.vynil-card-format {
+  background-color: white;
+  padding: 2px;
+  margin: 0;
+  border-top-right-radius: 10%;
+
+  font-weight: 500;
+  left: 0;
+  bottom: -1px;
+}
+
 /* Vertical Pointed List */
 .pointed-ul {
   list-style: none;

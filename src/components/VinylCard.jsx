@@ -5,24 +5,30 @@ export default function VinylCard({ vinyl }) {
 
   return (
     <>
-      <div className="col-12 col-md-6 col-lg-4 col-xl-3">
+      <div className="col">
         <div
           className="card vinyl-card hover_pointer h-100"
           onClick={() => navigate("/vinyl/" + vinyl.id)}
         >
-          <img
-            src={
-              vinyl.images?.length > 0
-                ? vinyl.images[0]
-                : "/assets/img/Vinyl.png"
-            } // Fallback image
-            className="card-img-top"
-            alt="Vinyl Cover"
-            draggable="false"
-          />
+          <div className="image-container position-relative">
+            <img
+              src={
+                vinyl.images?.length > 0
+                  ? vinyl.images[0]
+                  : "/assets/img/Vinyl.png"
+              } // Fallback image
+              className="card-img-top"
+              alt="Vinyl Cover"
+              draggable="false"
+            />
+
+            <p className="vynil-card-format position-absolute">
+              {vinyl.format} LP
+            </p>
+          </div>
 
           <div className="card-body d-flex flex-column align-items-center pt-0 pb-2">
-            <div className="w-100 d-flex justify-content-center align-items-center flex-column flex-grow-1 py-2">
+            <div className="w-100 d-flex justify-content-center align-items-center flex-column flex-grow-1 pt-1">
               <h4 className="card-title text-max-2-lines text-center m-0">
                 {vinyl.name}
               </h4>
@@ -39,10 +45,16 @@ export default function VinylCard({ vinyl }) {
               {vinyl.releaseYear}
             </p>
 
-            <div className="vinyl-card-buttons w-100 d-flex justify-content-center align-items-end">
-              <Link to="#" className="btn btn-success align-self-end mb-2">
+            <div className="vinyl-card-buttons w-100 d-flex justify-content-between align-items-end mb-2">
+              <Link to="#" className="btn btn-success align-self-end">
                 Add to Cart
               </Link>
+
+              {vinyl.available > 0 ? (
+                <p className="m-0 p-1">Available: {vinyl.available}</p>
+              ) : (
+                <p className="text-danger fw-semibold m-0 p-1">Not available</p>
+              )}
             </div>
           </div>
         </div>

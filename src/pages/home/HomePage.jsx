@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 //Components
-import VinylCard from "../../components/VinylCard";
+import VinylList from "../../components/VinylList";
 
 export default function HomePage() {
   const { fetchVinyls } = useGlobalContext();
@@ -33,11 +33,7 @@ export default function HomePage() {
       <div className="container">
         {/* NEW SECTION */}
         <h2 className="text-center pt-4 pb-2">New Vinyls</h2>
-        <div className="row mx-3 mx-md-0 g-3">
-          {vinylList.map((vinyl) => (
-            <VinylCard key={vinyl.id} vinyl={vinyl} />
-          ))}
-        </div>
+        <VinylList vinylList={vinylList} />
       </div>
     </>
   );
