@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 
 const GlobalContext = createContext();
 
@@ -127,12 +127,6 @@ export const GlobalProvider = ({ children }) => {
         navigate("/maintenance");
       });
   };
-
-  // Initialize the data
-  useEffect(() => {
-    fetchVinyls();
-    fetchArtists();
-  }, []);
 
   return (
     <GlobalContext.Provider

@@ -54,6 +54,7 @@ export default function VinylListPage() {
             </button>
           </div>
 
+          {/* Search Filters */}
           <div className="accordion" id="accordionFilter">
             <div className="accordion-item">
               <div
@@ -169,7 +170,7 @@ export default function VinylListPage() {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row g-3">
           {vinylList.map((vinyl) => (
             <VinylCard key={vinyl.id} vinyl={vinyl} />
           ))}

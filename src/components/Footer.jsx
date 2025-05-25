@@ -6,28 +6,57 @@ import TextToCopy from "./TextToCopy";
 export default function Footer() {
   return (
     <>
-      <hr className="w-100" />
+      <hr />
       <div className="container mb-4">
-        <div className="row row-cols-1 row-cols-md-3">
-          <div className="col">
-            <h3>Navigation</h3>
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          {/* First Column */}
+          <div className="col text-center text-md-start">
+            <h2>Navigation</h2>
             <ul className="reset-ul">
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" className="reset-a hover_pointer hover_underline">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/vinyl">Vinyl List</Link>
+                <Link
+                  to="/vinyl"
+                  className="reset-a hover_pointer hover_underline"
+                >
+                  Vinyl List
+                </Link>
               </li>
               <li>
-                <Link to="/artist">Band List</Link>
+                <Link
+                  to="/artist"
+                  className="reset-a hover_pointer hover_underline"
+                >
+                  Band List
+                </Link>
               </li>
             </ul>
           </div>
+
+          {/* Second Column */}
           <div className="col d-flex flex-column align-items-center">
-            <img src="/assets/img/Vinyl.png" alt="" className="rotate w-50" />
+            <h2 className="d-md-none">Social</h2>
+
+            <img
+              src="/assets/img/Vinyl.png"
+              alt="Vinyl"
+              className="rotate w-50 mb-4"
+            />
+
+            <nav className="d-flex justify-content-between align-items-center">
+              <div className="social-icon">A</div>
+              <div className="social-icon">A</div>
+              <div className="social-icon">A</div>
+            </nav>
           </div>
-          <div className="col text-end">
-            <h3>Assistenza</h3>
+
+          {/* Third Column */}
+          <div className="col text-center text-md-end">
+            <h2>Assistenza</h2>
             <ul className="reset-ul">
               <li>
                 <TextToCopy text="email@example.com" />

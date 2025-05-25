@@ -33,7 +33,7 @@ export default function HomePage() {
       <div className="container">
         {/* NEW SECTION */}
         <h2 className="text-center pt-4 pb-2">New Vinyls</h2>
-        <div className="row">
+        <div className="row mx-3 mx-md-0 g-3">
           {vinylList.map((vinyl) => (
             <VinylCard key={vinyl.id} vinyl={vinyl} />
           ))}
