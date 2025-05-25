@@ -11,7 +11,11 @@ export default function VinylCard({ vinyl }) {
           onClick={() => navigate("/vinyl/" + vinyl.id)}
         >
           <img
-            src={vinyl.images?.[0] || "assets/img/Vinyl.png"} // Fallback image
+            src={
+              vinyl.images?.length > 0
+                ? vinyl.images[0]
+                : "/assets/img/Vinyl.png"
+            } // Fallback image
             className="card-img-top"
             alt="Vinyl Cover"
             draggable="false"

@@ -7,7 +7,9 @@ export default function VinylDiscographyCard({ vinyl, isList, isLast }) {
   return (
     <div className={`col ${styles.pointedListItem}`}>
       <img
-        src={vinyl.images?.[0] || "assets/img/Vinyl.png"}
+        src={
+          vinyl.images?.length > 0 ? vinyl.images[0] : "/assets/img/Vinyl.png"
+        } // Fallback image
         className="img-fluid hover_pointer"
         onClick={() => navigate("/vinyl/" + vinyl.id)}
         alt="Vinyl Cover"
@@ -21,7 +23,10 @@ export default function VinylDiscographyCard({ vinyl, isList, isLast }) {
         {vinyl.name}
       </h4>
 
-      <p className="fs-5 text-center hover_pointer m-0 pt-2 w-100">
+      <p
+        className="fs-5 text-center hover_pointer m-0 pt-2 w-100"
+        onClick={() => navigate("/vinyl/" + vinyl.id)}
+      >
         {vinyl.releaseYear}
       </p>
 
