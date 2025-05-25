@@ -22,7 +22,7 @@ export default function ArtistDetailsPage() {
       <div className="row align-items-center bg-light p-4 rounded mb-5 shadow-sm">
         <div className="col-md-4 text-center mb-3 mb-md-0">
           <img
-            src={artist.images?.[0] || "assets/img/Vynil.png"}
+            src={artist.images?.[0] || "assets/img/Vinyl.png"}
             alt={`Photo of ${artist.name}`}
             className="img-fluid rounded"
           />
@@ -36,7 +36,7 @@ export default function ArtistDetailsPage() {
       {/* Discography */}
       <div>
         <h2 className="mb-3">Available vinyls:</h2>
-        <Discography vynils={artist.vynils} />
+        <Discography vinyls={artist.vinyls} />
       </div>
     </div>
   ) : (

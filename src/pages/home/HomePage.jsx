@@ -5,23 +5,23 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 //Components
-import VynilCard from "../../components/VynilCard";
+import VinylCard from "../../components/VinylCard";
 
 export default function HomePage() {
-  const { fetchVynils } = useGlobalContext();
+  const { fetchVinyls } = useGlobalContext();
   const navigate = useNavigate();
-  const [vynilList, setVynilList] = useState([]);
+  const [vinylList, setVinylList] = useState([]);
 
   useEffect(() => {
-    fetchVynils(setVynilList, navigate);
+    fetchVinyls(setVinylList, navigate);
   }, []);
 
   return (
     <>
       <div id="jumbo" className="position-relative overflow-hidden">
         {/* <img
-          src="assets/img/Vynil.png"
-          alt="vynil image"
+          src="assets/img/Vinyl.png"
+          alt="vinyl image"
           className="jumbo-img position-absolute"
           draggable="false"
         /> */}
@@ -32,10 +32,10 @@ export default function HomePage() {
       </div>
       <div className="container">
         {/* NEW SECTION */}
-        <h2 className="text-center pt-4 pb-2">New Vynils</h2>
+        <h2 className="text-center pt-4 pb-2">New Vinyls</h2>
         <div className="row">
-          {vynilList.map((vynil) => (
-            <VynilCard key={vynil.id} vynil={vynil} />
+          {vinylList.map((vinyl) => (
+            <VinylCard key={vinyl.id} vinyl={vinyl} />
           ))}
         </div>
       </div>

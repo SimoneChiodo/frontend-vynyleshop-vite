@@ -1,28 +1,28 @@
 import { useNavigate, Link } from "react-router-dom";
 import styles from "../assets/discography.module.css";
 
-export default function VynilDiscographyCard({ vynil, isList, isLast }) {
+export default function VinylDiscographyCard({ vinyl, isList, isLast }) {
   const navigate = useNavigate();
 
   return (
     <div className={`col ${styles.pointedListItem}`}>
       <img
-        src={vynil.images?.[0] || "assets/img/Vynil.png"}
+        src={vinyl.images?.[0] || "assets/img/Vinyl.png"}
         className="img-fluid hover_pointer"
-        onClick={() => navigate("/vynil/" + vynil.id)}
-        alt="Vynil Cover"
+        onClick={() => navigate("/vinyl/" + vinyl.id)}
+        alt="Vinyl Cover"
         draggable="false"
       />
 
       <h4
         className="text-center hover_pointer m-0 pt-2 w-100 h-100"
-        onClick={() => navigate("/vynil/" + vynil.id)}
+        onClick={() => navigate("/vinyl/" + vinyl.id)}
       >
-        {vynil.name}
+        {vinyl.name}
       </h4>
 
       <p className="fs-5 text-center hover_pointer m-0 pt-2 w-100">
-        {vynil.releaseYear}
+        {vinyl.releaseYear}
       </p>
 
       {isList && (

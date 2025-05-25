@@ -18,14 +18,14 @@ export const GlobalProvider = ({ children }) => {
   };
 
   // VYNILS INDEX
-  const fetchVynils = (setVynils, navigate) => {
-    fetch(`${VITE_BACKEND_API_URL}/vynil`)
+  const fetchVinyls = (setVinyls, navigate) => {
+    fetch(`${VITE_BACKEND_API_URL}/vinyl`)
       .then((res) => {
         checkStatusError(res, navigate);
         return res.json();
       })
       .then((data) => {
-        setVynils(data);
+        setVinyls(data);
       })
       .catch(() => {
         // Servers Offline
@@ -34,7 +34,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   // VYNILS FILTERED
-  const fetchFilteredVynils = (filters, setFilteredVynils, navigate) => {
+  const fetchFilteredVinyls = (filters, setFilteredVinyls, navigate) => {
     // NOTE: Type URLSearchParams automatically convert special characters
     const params = new URLSearchParams();
 
@@ -45,13 +45,13 @@ export const GlobalProvider = ({ children }) => {
       params.append("available", filters.available);
     if (filters.format) params.append("format", filters.format);
 
-    fetch(`${VITE_BACKEND_API_URL}/vynil/filter?${params.toString()}`)
+    fetch(`${VITE_BACKEND_API_URL}/vinyl/filter?${params.toString()}`)
       .then((res) => {
         checkStatusError(res, navigate);
         return res.json();
       })
       .then((data) => {
-        setFilteredVynils(data);
+        setFilteredVinyls(data);
       })
       .catch(() => {
         // Servers Offline
@@ -60,14 +60,14 @@ export const GlobalProvider = ({ children }) => {
   };
 
   // VYNILS SHOW
-  const fetchVynil = (vynilId, setVynil, navigate) => {
-    fetch(`${VITE_BACKEND_API_URL}/vynil/${vynilId}`)
+  const fetchVinyl = (vinylId, setVinyl, navigate) => {
+    fetch(`${VITE_BACKEND_API_URL}/vinyl/${vinylId}`)
       .then((res) => {
         checkStatusError(res, navigate);
         return res.json();
       })
       .then((data) => {
-        setVynil(data);
+        setVinyl(data);
       })
       .catch(() => {
         // Servers Offline
@@ -130,16 +130,16 @@ export const GlobalProvider = ({ children }) => {
 
   // Initialize the data
   useEffect(() => {
-    fetchVynils();
+    fetchVinyls();
     fetchArtists();
   }, []);
 
   return (
     <GlobalContext.Provider
       value={{
-        fetchVynils,
-        fetchFilteredVynils,
-        fetchVynil,
+        fetchVinyls,
+        fetchFilteredVinyls,
+        fetchVinyl,
         fetchArtists,
         fetchSearchArtist,
         fetchArtist,

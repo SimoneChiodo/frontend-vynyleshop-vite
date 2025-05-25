@@ -40,10 +40,10 @@ export default function Navbar() {
               <NavLink
                 className="nav-link px-1 mx-1"
                 aria-current="page"
-                to="/vynil"
+                to="/vinyl"
                 end
               >
-                Vynils List
+                Vinyl List
               </NavLink>
             </li>
             <li className="nav-item">

@@ -8,8 +8,8 @@ import DefaultLayout from "./layout/DefaultLayout";
 
 // Pages
 import HomePage from "./pages/home/HomePage";
-import VynilListPage from "./pages/vynil/VynilListPage";
-import VynilDetailsPage from "./pages/vynil/VynilDetailsPage";
+import VinylListPage from "./pages/vinyl/VinylListPage";
+import VinylDetailsPage from "./pages/vinyl/VinylDetailsPage";
 import ArtistListPage from "./pages/artist/ArtistListPage";
 import ArtistDetailsPage from "./pages/artist/ArtistDetailsPage";
 
@@ -25,8 +25,8 @@ function App() {
           <Routes>
             <Route Component={DefaultLayout}>
               <Route index element={<HomePage />}></Route>
-              <Route path="/vynil" element={<VynilListPage />}></Route>
-              <Route path="/vynil/:id" element={<VynilDetailsPage />}></Route>
+              <Route path="/vinyl" element={<VinylListPage />}></Route>
+              <Route path="/vinyl/:id" element={<VinylDetailsPage />}></Route>
               <Route path="/artist" element={<ArtistListPage />}></Route>
               <Route path="/artist/:id" element={<ArtistDetailsPage />}></Route>
 

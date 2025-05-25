@@ -1,20 +1,20 @@
 // Components
-import VynilDiscographyCard from "./VynilDiscographyCard";
+import VinylDiscographyCard from "./VinylDiscographyCard";
 
 // CSS Modules
 import styles from "../assets/discography.module.css";
 
-export default function Discography({ vynils }) {
+export default function Discography({ vinyls }) {
   return (
     <div
       className={`row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 ${styles.pointedLine}`}
     >
-      {vynils.map((vynil, index) => (
-        <VynilDiscographyCard
-          key={vynil.id}
-          vynil={vynil}
+      {vinyls.map((vinyl, index) => (
+        <VinylDiscographyCard
+          key={vinyl.id}
+          vinyl={vinyl}
           isList={true}
-          isLast={index === vynils.length - 1}
+          isLast={index === vinyls.length - 1}
         />
       ))}
     </div>

@@ -8,9 +8,9 @@ export default function ImageCarousel({ images }) {
             className={`carousel-item ${index === 0 ? "active" : ""}`}
           >
             <img
-              src={image || "/assets/img/Vynil.png"} // Fallback image
+              src={image || "/assets/img/Vinyl.png"} // Fallback image
               className="d-block w-100"
-              alt="Vynil Image"
+              alt="Vinyl Image"
             />
           </div>
         ))}
@@ -28,8 +28,8 @@ export default function ImageCarousel({ images }) {
             className={index === 0 ? "active" : ""}
           >
             <img
-              src={image || "/assets/img/Vynil.png"} // Fallback image
-              alt="Vynil Image"
+              src={image || "/assets/img/Vinyl.png"} // Fallback image
+              alt="Vinyl Image"
               className="hover_pointer"
               draggable="false"
             />

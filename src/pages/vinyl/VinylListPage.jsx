@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 //Components
-import VynilCard from "../../components/VynilCard";
+import VinylCard from "../../components/VinylCard";
 
-export default function VynilListPage() {
-  const { fetchFilteredVynils } = useGlobalContext();
+export default function VinylListPage() {
+  const { fetchFilteredVinyls } = useGlobalContext();
   const navigate = useNavigate();
-  const [vynilList, setVynilList] = useState([]);
+  const [vinylList, setVinylList] = useState([]);
 
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
@@ -18,21 +18,21 @@ export default function VynilListPage() {
   const [available, setAvailable] = useState("");
   const [format, setFormat] = useState("");
 
-  const loadVynils = () => {
-    fetchFilteredVynils(
+  const loadVinyls = () => {
+    fetchFilteredVinyls(
       { name, artist, releaseYear, available, format },
-      setVynilList,
+      setVinylList,
       navigate
     );
   };
 
   useEffect(() => {
-    loadVynils();
+    loadVinyls();
   }, []);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    loadVynils();
+    loadVinyls();
   };
 
   return (
@@ -40,7 +40,7 @@ export default function VynilListPage() {
       <div className="container">
         <div className="title-and-filters pb-3">
           <div className="d-flex justify-content-between align-items-center pb-1">
-            <h1 className="m-0">Vynils List</h1>
+            <h1 className="m-0">Vinyl List</h1>
 
             <button
               className="btn btn-outline-primary py-2 px-4"
@@ -170,8 +170,8 @@ export default function VynilListPage() {
         </div>
 
         <div className="row">
-          {vynilList.map((vynil) => (
-            <VynilCard key={vynil.id} vynil={vynil} />
+          {vinylList.map((vinyl) => (
+            <VinylCard key={vinyl.id} vinyl={vinyl} />
           ))}
         </div>
       </div>

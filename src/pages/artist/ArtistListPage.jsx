@@ -94,7 +94,7 @@ export default function ArtistListPage() {
               className="artist-photo-container reset-a flex-grow-1"
             >
               <img
-                src={artist.images?.[0] || "assets/img/Vynil.png"} // Fallback image
+                src={artist.images?.[0] || "assets/img/Vinyl.png"} // Fallback image
                 alt={`Foto di ${artist.name}`}
                 className="artist-photo img-fluid"
               />
