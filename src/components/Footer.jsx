@@ -48,15 +48,29 @@ export default function Footer() {
             />
 
             <nav className="d-flex justify-content-between align-items-center">
-              <div className="social-icon">
+              <a
+                href="https://www.facebook.com"
+                className="reset-a social-icon"
+                target="_blank"
+              >
                 <img src="/assets/icon/facebook-brands.svg" alt="Facebook" />
-              </div>
-              <div className="social-icon">
+              </a>
+
+              <a
+                href="https://www.x.com"
+                className="reset-a social-icon"
+                target="_blank"
+              >
                 <img src="/assets/icon/x-twitter-brands.svg" alt="Twitter" />
-              </div>
-              <div className="social-icon">
+              </a>
+
+              <a
+                href="https://www.instagram.com"
+                className="reset-a social-icon"
+                target="_blank"
+              >
                 <img src="/assets/icon/instagram-brands.svg" alt="Instagram" />
-              </div>
+              </a>
             </nav>
           </div>
 
