@@ -53,7 +53,7 @@ export default function Navbar() {
                 to="/artist"
                 end
               >
-                Artists List
+                Artist List
               </NavLink>
             </li>
           </ul>

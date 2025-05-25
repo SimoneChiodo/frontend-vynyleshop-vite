@@ -28,7 +28,7 @@ export default function ArtistListPage() {
     <div className="container">
       <div className="title-and-filters pb-3">
         <div className="d-flex justify-content-between align-items-center pb-1">
-          <h1 className="m-0">Artists List</h1>
+          <h1 className="m-0">Artist List</h1>
 
           <button
             className="btn btn-outline-primary py-2 px-4"

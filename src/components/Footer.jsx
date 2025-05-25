@@ -31,7 +31,7 @@ export default function Footer() {
                   to="/artist"
                   className="reset-a hover_pointer hover_underline"
                 >
-                  Band List
+                  Artist List
                 </Link>
               </li>
             </ul>
@@ -44,13 +44,19 @@ export default function Footer() {
             <img
               src="/assets/img/Vinyl.png"
               alt="Vinyl"
-              className="rotate w-50 mb-4"
+              className="rotate w-50 mb-3"
             />
 
             <nav className="d-flex justify-content-between align-items-center">
-              <div className="social-icon">A</div>
-              <div className="social-icon">A</div>
-              <div className="social-icon">A</div>
+              <div className="social-icon">
+                <img src="/assets/icon/facebook-brands.svg" alt="Facebook" />
+              </div>
+              <div className="social-icon">
+                <img src="/assets/icon/x-twitter-brands.svg" alt="Twitter" />
+              </div>
+              <div className="social-icon">
+                <img src="/assets/icon/instagram-brands.svg" alt="Instagram" />
+              </div>
             </nav>
           </div>
 
