@@ -17,29 +17,33 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  // VYNILS INDEX
-  const fetchVinyls = (setVinyls, navigate) => {
-    fetch(`${VITE_BACKEND_API_URL}/vinyl`)
-      .then((res) => {
-        checkStatusError(res, navigate);
-        return res.json();
-      })
-      .then((data) => {
-        setVinyls(data);
-      })
-      .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
-      });
-  };
+  // *************************
+  //      VINYLS METHODS
+  // *************************
 
-  // VYNILS FILTERED
-  const fetchFilteredVinyls = (filters, setFilteredVinyls, navigate) => {
-    // NOTE: Type URLSearchParams automatically convert special characters
+  // GET N VINYLS WITH OPTIONAL FILTERS
+  const fetchFilteredVinyls = (
+    filters,
+    lastId,
+    size,
+    vynils,
+    setVinyls,
+    setLastId,
+    setHasMore,
+    navigate
+  ) => {
+    // URLSearchParams transforms the params into URL valid parameters
     const params = new URLSearchParams();
 
+    // Starting ID
+    if (lastId) params.append("lastId", lastId);
+
+    // Number of vinyls
+    params.append("limit", size);
+
+    // Optional filters
     if (filters.name) params.append("name", filters.name);
-    if (filters.artist) params.append("artist", filters.artist);
+    if (filters.artistName) params.append("artistName", filters.artistName);
     if (filters.releaseYear) params.append("releaseYear", filters.releaseYear);
     if (filters.available !== undefined)
       params.append("available", filters.available);
@@ -51,7 +55,22 @@ export const GlobalProvider = ({ children }) => {
         return res.json();
       })
       .then((data) => {
-        setFilteredVinyls(data);
+        // If there is a result
+        if (data.length > 0) {
+          // Keep the old vinyls and add the new ones
+          const newVinyls = [...vynils, ...data];
+          setVinyls(newVinyls);
+
+          // Save the last id, it serves as a starting point for the next fetch
+          const newLastId = data[data.length - 1].id;
+          setLastId(newLastId);
+
+          // Check if there are other vinyls
+          checkIfMoreVinylsExist(filters, newLastId, navigate, setHasMore);
+        } else {
+          // There are no more vinyls
+          setHasMore(false);
+        }
       })
       .catch(() => {
         // Servers Offline
@@ -59,7 +78,86 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
-  // VYNILS SHOW
+  // CHECK STILL VINYLS - Check if there are still more vinyls (useful in combo with fetchFilteredVinyls())
+  const checkIfMoreVinylsExist = (filters, lastId, navigate, setHasMore) => {
+    const params = new URLSearchParams();
+
+    // Starting ID
+    if (lastId) params.append("lastId", lastId);
+
+    // Number of vinyls
+    params.append("limit", 1);
+
+    // Optional filters
+    if (filters.name) params.append("name", filters.name);
+    if (filters.artistName) params.append("artistName", filters.artistName);
+    if (filters.releaseYear) params.append("releaseYear", filters.releaseYear);
+    if (filters.available !== undefined)
+      params.append("available", filters.available);
+    if (filters.format) params.append("format", filters.format);
+
+    fetch(`${VITE_BACKEND_API_URL}/vinyl/filter?${params.toString()}`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        // If there are other vinyls set true else false
+        setHasMore(data.length > 0);
+      })
+      .catch(() => {
+        // Servers Offline
+        navigate("/maintenance");
+      });
+  };
+
+  // GET RANDOM N VINYLS
+  const fetchRandomVinyls = (limit, vinyls, setVinyls, navigate) => {
+    const params = new URLSearchParams();
+
+    // Number of vinyls
+    params.append("limit", limit);
+
+    fetch(`${VITE_BACKEND_API_URL}/vinyl/random?${params.toString()}`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        // Keep the old vinyls and add the new ones
+        const newVinyls = [...vinyls, ...data];
+        setVinyls(newVinyls);
+      })
+      .catch(() => {
+        // Servers Offline
+        navigate("/maintenance");
+      });
+  };
+
+  // GET LAST CREATED N VINYLS
+  const fetchLatestVinyls = (limit, vinyls, setVinyls, navigate) => {
+    const params = new URLSearchParams();
+
+    // Number of vinyls
+    params.append("limit", limit);
+
+    fetch(`${VITE_BACKEND_API_URL}/vinyl/latest?${params.toString()}`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        // Keep the old vinyls and add the new ones
+        const newVinyls = [...vinyls, ...data];
+        setVinyls(newVinyls);
+      })
+      .catch(() => {
+        // Servers Offline
+        navigate("/maintenance");
+      });
+  };
+
+  // GET ONE VINYL
   const fetchVinyl = (vinylId, setVinyl, navigate) => {
     fetch(`${VITE_BACKEND_API_URL}/vinyl/${vinylId}`)
       .then((res) => {
@@ -67,6 +165,7 @@ export const GlobalProvider = ({ children }) => {
         return res.json();
       })
       .then((data) => {
+        // Set the result
         setVinyl(data);
       })
       .catch(() => {
@@ -75,36 +174,55 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
-  // ARTISTS INDEX
-  const fetchArtists = (setArtists, navigate) => {
-    fetch(`${VITE_BACKEND_API_URL}/artist`)
-      .then((res) => {
-        checkStatusError(res, navigate);
-        return res.json();
-      })
-      .then((data) => {
-        setArtists(data);
-      })
-      .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
-      });
-  };
+  // **************************
+  //      ARTISTS METHODS
+  // **************************
 
-  // ARTISTS SEARCH
-  const fetchSearchArtist = (name, setSearchArtists, navigate) => {
-    // NOTE: Type URLSearchParams automatically convert special characters
+  // GET N ARTISTS WITH OPTIONAL FILTERS
+  const fetchFilteredArtists = (
+    filters,
+    lastId,
+    size,
+    artists,
+    setArtists,
+    setLastId,
+    setHasMore,
+    navigate
+  ) => {
+    // URLSearchParams transforms the params into URL valid parameters
     const params = new URLSearchParams();
 
-    if (name) params.append("name", name);
+    // Starting ID
+    if (lastId) params.append("lastId", lastId);
 
-    fetch(`${VITE_BACKEND_API_URL}/artist/search?${params.toString()}`)
+    // Number of artists
+    params.append("limit", size);
+
+    // Optional filters
+    if (filters.name) params.append("name", filters.name);
+
+    fetch(`${VITE_BACKEND_API_URL}/artist/filter?${params.toString()}`)
       .then((res) => {
         checkStatusError(res, navigate);
         return res.json();
       })
       .then((data) => {
-        setSearchArtists(data);
+        // If there is a result
+        if (data.length > 0) {
+          // Keep the old artists and add the new ones
+          const newArtists = [...artists, ...data];
+          setArtists(newArtists);
+
+          // Save the last id, it serves as a starting point for the next fetch
+          const newLastId = data[data.length - 1].id;
+          setLastId(newLastId);
+
+          // Check if there are other artists
+          checkIfMoreArtistsExist(filters, newLastId, navigate, setHasMore);
+        } else {
+          // There are no more artists
+          setHasMore(false);
+        }
       })
       .catch(() => {
         // Servers Offline
@@ -112,7 +230,58 @@ export const GlobalProvider = ({ children }) => {
       });
   };
 
-  // ARTISTS SHOW
+  // CHECK STILL ARTISTS - Check if there are still more vinyls (useful in combo with fetchFilteredArtists())
+  const checkIfMoreArtistsExist = (filters, lastId, navigate, setHasMore) => {
+    const params = new URLSearchParams();
+
+    // Starting ID
+    params.append("lastId", lastId);
+
+    // Number of artists
+    params.append("limit", 1);
+
+    // Optional filters
+    if (filters.name) params.append("name", filters.name);
+
+    fetch(`${VITE_BACKEND_API_URL}/artist/filter?${params.toString()}`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        // If there are other vinyls set true else false
+        setHasMore(data.length > 0);
+      })
+      .catch(() => {
+        // Servers Offline
+        navigate("/maintenance");
+      });
+  };
+
+  // GET RANDOM N ARTISTS
+  const fetchRandomArtists = (limit, artists, setArtists, navigate) => {
+    const params = new URLSearchParams();
+
+    // Number of artists
+    params.append("limit", limit);
+
+    fetch(`${VITE_BACKEND_API_URL}/artist/random?${params.toString()}`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        // Keep the old artists and add the new ones
+        const newArtists = [...artists, ...data];
+        setArtists(newArtists);
+      })
+      .catch(() => {
+        // Servers Offline
+        navigate("/maintenance");
+      });
+  };
+
+  // GET ONE ARTIST
   const fetchArtist = (artistId, setArtist, navigate) => {
     fetch(`${VITE_BACKEND_API_URL}/artist/${artistId}`)
       .then((res) => {
@@ -120,6 +289,7 @@ export const GlobalProvider = ({ children }) => {
         return res.json();
       })
       .then((data) => {
+        // Set the result
         setArtist(data);
       })
       .catch(() => {
@@ -131,11 +301,14 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        fetchVinyls,
+        // Vynils fetch
         fetchFilteredVinyls,
+        fetchRandomVinyls,
+        fetchLatestVinyls,
         fetchVinyl,
-        fetchArtists,
-        fetchSearchArtist,
+        // Artists fetch
+        fetchFilteredArtists,
+        fetchRandomArtists,
         fetchArtist,
       }}
     >

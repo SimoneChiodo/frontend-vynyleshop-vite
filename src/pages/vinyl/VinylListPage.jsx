@@ -11,28 +11,39 @@ export default function VinylListPage() {
   const { fetchFilteredVinyls } = useGlobalContext();
   const navigate = useNavigate();
   const [vinylList, setVinylList] = useState([]);
+  const [lastId, setLastId] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
 
   const [name, setName] = useState("");
-  const [artist, setArtist] = useState("");
+  const [artistName, setArtist] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
   const [available, setAvailable] = useState("");
   const [format, setFormat] = useState("");
 
-  const loadVinyls = () => {
+  const filters = { name, artistName, releaseYear, available, format };
+
+  const loadVinyls = (replace) => {
     fetchFilteredVinyls(
-      { name, artist, releaseYear, available, format },
+      filters,
+      replace ? null : lastId,
+      2,
+      replace ? [] : vinylList,
       setVinylList,
+      setLastId,
+      setHasMore,
       navigate
     );
   };
 
+  // First load
   useEffect(() => {
-    loadVinyls();
+    loadVinyls(false);
   }, []);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    loadVinyls();
+    setHasMore(true); // riattiva il pulsante load
+    loadVinyls(true);
   };
 
   return (
@@ -46,9 +57,9 @@ export default function VinylListPage() {
               className="btn btn-outline-primary py-2 px-4"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseFilter"
+              data-bs-target="#collapseOne"
               aria-expanded="true"
-              aria-controls="collapseFilter"
+              aria-controls="collapseOne"
             >
               Filters
             </button>
@@ -58,9 +69,8 @@ export default function VinylListPage() {
           <div className="accordion" id="accordionFilter">
             <div className="accordion-item">
               <div
-                id="collapseFilter"
-                className="accordion-collapse collapse"
-                data-bs-parent="#accordionFilter"
+                id="collapseOne"
+                className="accordion-collapse collapse show"
               >
                 <div className="accordion-body">
                   <form className="row g-3" onSubmit={handleOnSubmit}>
@@ -80,19 +90,19 @@ export default function VinylListPage() {
                         onChange={(e) => setName(e.target.value)}
                       />
                     </div>
-                    {/* Artist */}
+                    {/* ArtistName */}
                     <div className="col-md-6">
                       <label
                         htmlFor="validationCustom02"
                         className="form-label"
                       >
-                        Artist
+                        ArtistName
                       </label>
                       <input
                         type="text"
                         className="form-control"
                         id="validationCustom02"
-                        value={artist}
+                        value={artistName}
                         onChange={(e) => setArtist(e.target.value)}
                       />
                     </div>
@@ -127,8 +137,8 @@ export default function VinylListPage() {
                         onChange={(e) => setAvailable(e.target.value)}
                       >
                         <option value="">All</option>
-                        <option value="true">Available</option>
-                        <option value="false">Unavailable</option>
+                        <option value="1">Available</option>
+                        <option value="0">Unavailable</option>
                       </select>
                     </div>
                     {/* Format */}
@@ -157,8 +167,8 @@ export default function VinylListPage() {
                         className="btn btn-primary fs-5 px-5"
                         type="submit"
                         data-bs-toggle="collapse"
-                        data-bs-target="#collapseFilter"
-                        aria-controls="collapseFilter"
+                        data-bs-target="#collapseOne"
+                        aria-controls="collapseOne"
                       >
                         Search
                       </button>
@@ -173,6 +183,18 @@ export default function VinylListPage() {
         <div className="row g-3">
           <VinylList vinylList={vinylList} />
         </div>
+
+        {hasMore && (
+          <div className="d-flex justify-content-center">
+            <button
+              className="btn btn-outline-success mt-4 mb-5"
+              onClick={() => loadVinyls(false)}
+              disabled={vinylList.length === 0}
+            >
+              Load more
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

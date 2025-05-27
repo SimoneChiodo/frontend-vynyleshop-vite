@@ -34,8 +34,9 @@ export default function VinylCard({ vinyl }) {
               </h4>
               <p className="card-text text-center m-0">by</p>
               <Link
-                href={"/artist/" + vinyl.artistId}
+                to={"/artist/" + vinyl.artistId}
                 className="reset-a hover_underline fs-5 fw-semibold card-text text-max-2-lines text-center"
+                onClick={(e) => e.stopPropagation()}
               >
                 {vinyl.artistName}
               </Link>
@@ -46,7 +47,11 @@ export default function VinylCard({ vinyl }) {
             </p>
 
             <div className="vinyl-card-buttons w-100 d-flex justify-content-between align-items-end mb-2">
-              <Link to="#" className="btn btn-success align-self-end">
+              <Link
+                to="#"
+                className="btn btn-success align-self-end"
+                onClick={(e) => e.stopPropagation()}
+              >
                 Add to Cart
               </Link>
 

@@ -5,23 +5,36 @@ import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function ArtistListPage() {
-  const { fetchSearchArtist } = useGlobalContext();
+  const { fetchFilteredArtists } = useGlobalContext();
   const navigate = useNavigate();
   const [artistList, setArtistList] = useState([]);
+  const [lastId, setLastId] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
 
   const [name, setName] = useState("");
+  const filters = { name };
 
-  const loadArtists = () => {
-    fetchSearchArtist(name, setArtistList, navigate);
+  const loadArtists = (replace) => {
+    fetchFilteredArtists(
+      filters,
+      replace ? null : lastId,
+      2,
+      replace ? [] : artistList,
+      setArtistList,
+      setLastId,
+      setHasMore,
+      navigate
+    );
   };
 
   useEffect(() => {
-    loadArtists();
+    loadArtists(false);
   }, []);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    loadArtists();
+    setHasMore(true); // riattiva il pulsante load
+    loadArtists(true);
   };
 
   return (
@@ -106,6 +119,18 @@ export default function ArtistListPage() {
           </div>
         </div>
       ))}
+
+      {hasMore && (
+        <div className="d-flex justify-content-center">
+          <button
+            className="btn btn-outline-success mt-4 mb-5"
+            onClick={() => loadArtists(false)}
+            disabled={artistList.length === 0}
+          >
+            Load more
+          </button>
+        </div>
+      )}
     </div>
   );
 }
