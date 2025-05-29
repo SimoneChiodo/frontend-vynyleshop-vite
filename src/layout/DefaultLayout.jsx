@@ -12,7 +12,7 @@ export default function DefaultLayout() {
           <Navbar />
         </header>
 
-        <main className="flex-grow-1 mt-4 mb-5 pb-5">
+        <main className="flex-grow-1 my-4">
           <Outlet />
         </main>
 

@@ -50,7 +50,7 @@ export default function VinylDetailsPage() {
                 <h3 className="mb-4">Year: {vinyl.releaseYear}</h3>
 
                 <h4>About the vinyl: </h4>
-                <ul className="fs-1_1">
+                <ul className="rem1_1">
                   <li>Available: {vinyl.available}</li>
                   <li>Genre: {vinyl.genre}</li>
                   <li>Format: {vinyl.format}</li>
@@ -72,7 +72,7 @@ export default function VinylDetailsPage() {
           <div className="vinyl-tracklist d-flex flex-column flex-lg-row">
             <div className="side-one flex-grow-1 mt-2 m-lg-0">
               <h2 className="text-center">Side one</h2>
-              <ul className="pointed-ul fs-1_1 ps-1">
+              <ul className="pointed-ul rem1_1 ps-1">
                 {Array.isArray(vinyl.sideone) &&
                   vinyl.sideone.map((track, index) => (
                     <li key={index} className="pointed-li">
@@ -85,7 +85,7 @@ export default function VinylDetailsPage() {
             </div>
             <div className="side-two flex-grow-1 mt-3 m-lg-0">
               <h2 className="text-center">Side two</h2>
-              <ul className="pointed-ul fs-1_1 ps-1">
+              <ul className="pointed-ul rem1_1 ps-1">
                 {Array.isArray(vinyl.sidetwo) &&
                   vinyl.sidetwo.map((track, index) => (
                     <li key={index} className="pointed-li">
