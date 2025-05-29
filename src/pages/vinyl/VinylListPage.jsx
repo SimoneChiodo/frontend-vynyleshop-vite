@@ -68,10 +68,7 @@ export default function VinylListPage() {
           {/* Search Filters */}
           <div className="accordion" id="accordionFilter">
             <div className="accordion-item">
-              <div
-                id="collapseOne"
-                className="accordion-collapse collapse show"
-              >
+              <div id="collapseOne" className="accordion-collapse collapse">
                 <div className="accordion-body">
                   <form className="row g-3" onSubmit={handleOnSubmit}>
                     {/* Name */}

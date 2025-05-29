@@ -25,16 +25,16 @@ export default function HomePage() {
   return (
     <>
       {/* JUMBO */}
-      <section id="jumbo" className="position-relative overflow-hidden">
-        {/* <img
-          src="assets/img/Vinyl.png"
-          alt="vinyl image"
-          className="jumbo-img position-absolute"
-          draggable="false"
-        /> */}
-
-        <div className="jumbo-text h-100 w-100 d-flex justify-content-center fade-to-white">
-          <h1 className="">HomePage</h1>
+      <section
+        id="jumbo"
+        className="position-relative overflow-hidden text-white"
+      >
+        <div className="h-100 d-flex flex-column justify-content-center align-items-center text-center">
+          <h1 className="rem3 m-0">VynyleShop</h1>
+          <hr className="my-2 w-70 w-md-40" />
+          <p className="fs-4">
+            Discover rare records, timeless classics, and hidden gems
+          </p>
         </div>
       </section>
 

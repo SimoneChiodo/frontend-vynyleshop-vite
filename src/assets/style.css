@@ -87,7 +87,8 @@
 
 /* Background */
 .fade-to-white {
-  background: linear-gradient(to bottom, transparent 0%, black 100%);
+  /* background: linear-gradient(to bottom, transparent 0%, black 100%); */
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 /* Font Sizes */
@@ -326,19 +327,15 @@ div.blob {
     HOMEPAGE
  ***************/
 #jumbo {
-  max-height: 350px !important;
+  height: 40vh;
+  background-image: url("/assets/img/jumbo-background.png");
+  background-size: cover;
+  background-position: center;
 }
 
-/* .jumbo-text * {
-  z-index: 1;
-} */
-
-/* .jumbo-img {
-  width: 80%;
-  left: 50%;
-  bottom: 0%;
-  transform: translate(-50%, 50%);
-} */
+#jumbo > div {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 /* Vinyl Random, Artist Random */
 #vinyl-random,
@@ -384,10 +381,14 @@ div.blob {
   .w-md-50 {
     width: 50% !important;
   }
+  .w-md-40 {
+    width: 40% !important;
+  }
 
   /* HOMEPAGE */
+  /* Jumbo */
   #jumbo {
-    max-height: 500px !important;
+    height: 48vh;
   }
 
   /* VYNIL DETAILS PAGE */
@@ -418,11 +419,6 @@ div.blob {
 
   .w-md-45 {
     width: 45% !important;
-  }
-
-  /* HOMEPAGE */
-  #jumbo {
-    max-height: 800px !important;
   }
 
   /* VYNIL DETAILS PAGE */
