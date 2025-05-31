@@ -24,8 +24,8 @@ export default function Navbar() {
 
         {/* Links */}
         <div className="collapse navbar-collapse" id="navbarText">
+          {/* Links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {/* Homepage */}
             <li className="nav-item">
               <NavLink
                 className="nav-link px-1 mx-1"
@@ -36,6 +36,7 @@ export default function Navbar() {
                 Home
               </NavLink>
             </li>
+
             <li className="nav-item">
               <NavLink
                 className="nav-link px-1 mx-1"
@@ -57,6 +58,14 @@ export default function Navbar() {
               </NavLink>
             </li>
           </ul>
+
+          {/* User Info */}
+          <div className="d-flex justify-content-end align-items-center me-2 m-lg-0">
+            <a className="reset-a hover-pointer m-0 me-1 pe-1 border-end border-2 border-secondary py-1">
+              View cart 🛒
+            </a>
+            <button className="btn btn-primary ms-1">Login</button>
+          </div>
         </div>
       </div>
     </nav>

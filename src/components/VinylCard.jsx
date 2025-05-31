@@ -48,7 +48,6 @@ export default function VinylCard({ vinyl }) {
 
             <div className="vinyl-card-buttons w-100 d-flex justify-content-between align-items-end mb-2">
               <Link
-                to="#"
                 className="btn btn-success align-self-end"
                 onClick={(e) => e.stopPropagation()}
               >

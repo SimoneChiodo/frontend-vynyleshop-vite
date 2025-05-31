@@ -4,7 +4,7 @@ import VinylCard from "../components/VinylCard";
 export default function VinylList({ vinylList }) {
   return (
     <>
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 mx-2 mx-md-0 g-3">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 m-0 g-3">
         {vinylList.map((vinyl) => (
           <VinylCard key={vinyl.id} vinyl={vinyl} />
         ))}

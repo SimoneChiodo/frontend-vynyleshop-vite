@@ -40,7 +40,7 @@ export default function ArtistListPage() {
   return (
     <div className="container mb-5">
       <div className="title-and-filters pb-3">
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-between align-items-center pb-2">
           <h1 className="m-0">Artist List</h1>
 
           <button
@@ -56,34 +56,36 @@ export default function ArtistListPage() {
         </div>
 
         <div id="collapseFilter" className="collapse">
-          <form className="row g-3" onSubmit={handleOnSubmit}>
-            {/* Name */}
-            <div className="col">
-              <label htmlFor="validationCustom01" className="form-label">
-                Name
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="validationCustom01"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
+          <div className="pt-2 px-4">
+            <form className="row g-3" onSubmit={handleOnSubmit}>
+              {/* Name */}
+              <div className="col">
+                <label htmlFor="validationCustom01" className="form-label">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="validationCustom01"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
 
-            <div className="col-12 d-flex justify-content-center">
-              <button
-                className="btn btn-primary fs-5 px-5"
-                type="submit"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseFilter"
-                aria-expanded="false"
-                aria-controls="collapseFilter"
-              >
-                Search
-              </button>
-            </div>
-          </form>
+              <div className="col-12 d-flex justify-content-center">
+                <button
+                  className="btn btn-primary fs-5 px-5"
+                  type="submit"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFilter"
+                  aria-expanded="false"
+                  aria-controls="collapseFilter"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 

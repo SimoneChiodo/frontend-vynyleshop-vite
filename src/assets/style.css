@@ -48,11 +48,6 @@
   object-fit: cover;
 }
 
-/* Bootstrap Accordion */
-.accordion-item:has(.accordion-collapse:not(.show, .collapsing)) {
-  border: 0 !important;
-}
-
 /***************
     UTILITIES 
  ***************/
