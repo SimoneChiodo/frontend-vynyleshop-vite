@@ -26,7 +26,7 @@ export default function VinylListPage() {
     fetchFilteredVinyls(
       filters,
       replace ? null : lastId,
-      2,
+      12,
       replace ? [] : vinylList,
       setVinylList,
       setLastId,
@@ -48,132 +48,111 @@ export default function VinylListPage() {
 
   return (
     <>
-      <div className="container">
+      <div className="container mb-5">
         <div className="title-and-filters pb-3">
-          <div className="d-flex justify-content-between align-items-center pb-1">
+          <div className="d-flex justify-content-between align-items-center">
             <h1 className="m-0">Vinyl List</h1>
-
             <button
               className="btn btn-outline-primary py-2 px-4"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
+              data-bs-target="#collapseFilter"
+              aria-expanded="false"
+              aria-controls="collapseFilter"
             >
               Filters
             </button>
           </div>
 
           {/* Search Filters */}
-          <div className="accordion" id="accordionFilter">
-            <div className="accordion-item">
-              <div id="collapseOne" className="accordion-collapse collapse">
-                <div className="accordion-body">
-                  <form className="row g-3" onSubmit={handleOnSubmit}>
-                    {/* Name */}
-                    <div className="col-md-6">
-                      <label
-                        htmlFor="validationCustom01"
-                        className="form-label"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="validationCustom01"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-                    {/* ArtistName */}
-                    <div className="col-md-6">
-                      <label
-                        htmlFor="validationCustom02"
-                        className="form-label"
-                      >
-                        ArtistName
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="validationCustom02"
-                        value={artistName}
-                        onChange={(e) => setArtist(e.target.value)}
-                      />
-                    </div>
-                    {/* ReleaseYear */}
-                    <div className="col-md-12 col-lg-4">
-                      <label
-                        htmlFor="validationCustom03"
-                        className="form-label"
-                      >
-                        ReleaseYear
-                      </label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        id="validationCustom03"
-                        value={releaseYear}
-                        onChange={(e) => setReleaseYear(e.target.value)}
-                      />
-                    </div>
-                    {/* Available */}
-                    <div className="col-md-6 col-lg-4">
-                      <label
-                        htmlFor="validationCustom04"
-                        className="form-label"
-                      >
-                        Available
-                      </label>
-                      <select
-                        className="form-select"
-                        id="validationCustom04"
-                        value={available}
-                        onChange={(e) => setAvailable(e.target.value)}
-                      >
-                        <option value="">All</option>
-                        <option value="1">Available</option>
-                        <option value="0">Unavailable</option>
-                      </select>
-                    </div>
-                    {/* Format */}
-                    <div className="col-md-6 col-lg-4">
-                      <label
-                        htmlFor="validationCustom05"
-                        className="form-label"
-                      >
-                        Format
-                      </label>
-                      <select
-                        className="form-select"
-                        id="validationCustom05"
-                        value={format}
-                        onChange={(e) => setFormat(e.target.value)}
-                      >
-                        <option value="">All</option>
-                        <option value="33">33</option>
-                        <option value="45">45</option>
-                        <option value="78">78</option>
-                      </select>
-                    </div>
-
-                    <div className="col-12 d-flex justify-content-center">
-                      <button
-                        className="btn btn-primary fs-5 px-5"
-                        type="submit"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
-                        aria-controls="collapseOne"
-                      >
-                        Search
-                      </button>
-                    </div>
-                  </form>
-                </div>
+          <div id="collapseFilter" className="collapse">
+            <form className="row g-3" onSubmit={handleOnSubmit}>
+              {/* Name */}
+              <div className="col-md-6">
+                <label htmlFor="validationCustom01" className="form-label">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="validationCustom01"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
-            </div>
+              {/* ArtistName */}
+              <div className="col-md-6">
+                <label htmlFor="validationCustom02" className="form-label">
+                  ArtistName
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="validationCustom02"
+                  value={artistName}
+                  onChange={(e) => setArtist(e.target.value)}
+                />
+              </div>
+              {/* ReleaseYear */}
+              <div className="col-md-12 col-lg-4">
+                <label htmlFor="validationCustom03" className="form-label">
+                  ReleaseYear
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="validationCustom03"
+                  value={releaseYear}
+                  onChange={(e) => setReleaseYear(e.target.value)}
+                />
+              </div>
+              {/* Available */}
+              <div className="col-md-6 col-lg-4">
+                <label htmlFor="validationCustom04" className="form-label">
+                  Available
+                </label>
+                <select
+                  className="form-select"
+                  id="validationCustom04"
+                  value={available}
+                  onChange={(e) => setAvailable(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="1">Available</option>
+                  <option value="0">Unavailable</option>
+                </select>
+              </div>
+              {/* Format */}
+              <div className="col-md-6 col-lg-4">
+                <label htmlFor="validationCustom05" className="form-label">
+                  Format
+                </label>
+                <select
+                  className="form-select"
+                  id="validationCustom05"
+                  value={format}
+                  onChange={(e) => setFormat(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="33">33</option>
+                  <option value="45">45</option>
+                  <option value="78">78</option>
+                </select>
+              </div>
+
+              <div className="col-12 d-flex justify-content-center">
+                <button
+                  className="btn btn-primary fs-5 px-5"
+                  type="submit"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFilter"
+                  aria-expanded="false"
+                  aria-controls="collapseFilter"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 
@@ -184,7 +163,7 @@ export default function VinylListPage() {
         {hasMore && (
           <div className="d-flex justify-content-center">
             <button
-              className="btn btn-outline-success mt-4 mb-5"
+              className="btn btn-outline-success mt-4"
               onClick={() => loadVinyls(false)}
               disabled={vinylList.length === 0}
             >

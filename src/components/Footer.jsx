@@ -14,14 +14,14 @@ export default function Footer() {
             <h2>Navigation</h2>
             <ul className="reset-ul">
               <li>
-                <Link to="/" className="reset-a hover_pointer hover_underline">
+                <Link to="/" className="reset-a hover-pointer hover-underline">
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   to="/vinyl"
-                  className="reset-a hover_pointer hover_underline"
+                  className="reset-a hover-pointer hover-underline"
                 >
                   Vinyl List
                 </Link>
@@ -29,7 +29,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/artist"
-                  className="reset-a hover_pointer hover_underline"
+                  className="reset-a hover-pointer hover-underline"
                 >
                   Artist List
                 </Link>

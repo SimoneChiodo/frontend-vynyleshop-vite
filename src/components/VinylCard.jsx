@@ -7,7 +7,7 @@ export default function VinylCard({ vinyl }) {
     <>
       <div className="col">
         <div
-          className="card vinyl-card hover_pointer h-100"
+          className="card vinyl-card hover-pointer h-100"
           onClick={() => navigate("/vinyl/" + vinyl.id)}
         >
           <div className="image-container position-relative">
@@ -35,14 +35,14 @@ export default function VinylCard({ vinyl }) {
               <p className="card-text text-center m-0">by</p>
               <Link
                 to={"/artist/" + vinyl.artistId}
-                className="reset-a hover_underline fs-5 fw-semibold card-text text-max-2-lines text-center"
+                className="reset-a hover-underline fs-5 fw-semibold card-text text-max-2-lines text-center"
                 onClick={(e) => e.stopPropagation()}
               >
                 {vinyl.artistName}
               </Link>
             </div>
 
-            <p className="fs-5 text-center hover_pointer m-0 mb-1">
+            <p className="fs-5 text-center hover-pointer m-0 mb-1">
               {vinyl.releaseYear}
             </p>
 

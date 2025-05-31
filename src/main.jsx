@@ -8,7 +8,7 @@ import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Bootstrap JS
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 // Custom CSS
 import "./assets/style.css";

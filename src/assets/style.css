@@ -1,4 +1,6 @@
 :root {
+  --artist-image-border-color: rgb(192, 197, 198);
+  --pfp-review-color: lightskyblue;
 }
 
 /***************
@@ -60,11 +62,11 @@
 }
 
 /* Hover Effects */
-.hover_underline:hover {
+.hover-underline:hover {
   text-decoration: underline;
 }
 
-.hover_pointer:hover {
+.hover-pointer:hover {
   cursor: pointer;
 }
 
@@ -83,12 +85,6 @@
 }
 .rotate:hover {
   rotate: 1080deg;
-}
-
-/* Background */
-.fade-to-white {
-  /* background: linear-gradient(to bottom, transparent 0%, black 100%); */
-  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 /* Font Sizes */
@@ -221,7 +217,7 @@
   height: 50px;
   margin-right: 10px;
   border-radius: 50%;
-  background-color: lightskyblue;
+  background-color: var(--pfp-review-color);
   display: flex;
   justify-content: center;
   align-items: end;
@@ -252,7 +248,7 @@
 }
 
 .artist-photo {
-  border: 20px solid lightblue;
+  border: 20px solid var(--artist-image-border-color);
   width: 100%;
   transition: all 0.3s ease-in-out;
 }
@@ -374,7 +370,7 @@ div.blob {
   /* UTILITIES */
   /* Vynil Card */
   .vinyl-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
 
   /*Width*/
@@ -409,7 +405,7 @@ div.blob {
   /* UTILITIES */
   /* Vynil Card */
   .vinyl-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.09);
   }
 
   /* Width */

@@ -22,13 +22,14 @@ export default function VinylDetailsPage() {
     <>
       {vinyl ? (
         <div className="container vinyl-show">
-          <Link to="/vinyl" className="reset-a">
-            <div className="back-button rounded-end position-absolute card py-2 ps-3 pe-3 z-3">
-              🔙
-            </div>
+          <Link
+            to="/vinyl"
+            className="reset-a text-primary hover-underline fs-2 fw-semibold"
+          >
+            ← Back to Vinyl List
           </Link>
 
-          <div className="vinyl-image-description d-flex flex-column flex-lg-row">
+          <div className="vinyl-image-description d-flex flex-column flex-lg-row mt-3">
             <div className="img-container d-flex justify-content-center">
               <ImageCarousel images={vinyl.images} />
             </div>
@@ -41,7 +42,7 @@ export default function VinylDetailsPage() {
                   Author:{" "}
                   <Link
                     to={"/artist/" + vinyl.artistId}
-                    className="reset-a hover_underline"
+                    className="reset-a hover-underline"
                   >
                     {vinyl.artistName}
                   </Link>

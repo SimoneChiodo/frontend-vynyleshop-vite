@@ -84,7 +84,7 @@ export default function HomePage() {
                 {randomVinylList?.[0]?.genre} gem by{" "}
                 <Link
                   to={"/artist/" + randomVinylList?.[0]?.artistId}
-                  className="reset-a hover_underline fw-semibold"
+                  className="reset-a hover-underline fw-semibold"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {randomVinylList?.[0]?.artistName}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/GlobalContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 // Components
 import Discography from "../../components/Discography";
@@ -17,17 +17,24 @@ export default function ArtistDetailsPage() {
   }, [id]);
 
   return artist ? (
-    <div className="container my-5">
-      {/* Jumbo */}
-      <div className="row align-items-center bg-light p-4 rounded mb-5 shadow-sm">
-        <div className="col-md-4 text-center mb-3 mb-md-0">
+    <div className="container mb-5">
+      <Link
+        to="/artist"
+        className="reset-a text-primary hover-underline fs-2 fw-semibold"
+      >
+        ← Back to Artist List
+      </Link>
+
+      {/* Image and Bio */}
+      <div className="row align-items-center mb-5 mt-3">
+        <div className="col-lg-7 text-center mb-3 mb-lg-0">
           <img
             src={artist.images?.[0] || "assets/img/Vinyl.png"}
             alt={`Photo of ${artist.name}`}
-            className="img-fluid rounded"
+            className="img-fluid"
           />
         </div>
-        <div className="col-md-8">
+        <div className="col-lg-5 fs-5">
           <h1>{artist.name}</h1>
           <p>{artist.bio || "Biography not available."}</p>
         </div>

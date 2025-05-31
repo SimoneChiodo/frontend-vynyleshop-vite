@@ -10,21 +10,21 @@ export default function VinylDiscographyCard({ vinyl, isList, isLast }) {
         src={
           vinyl.images?.length > 0 ? vinyl.images[0] : "/assets/img/Vinyl.png"
         } // Fallback image
-        className="img-fluid hover_pointer"
+        className="img-fluid hover-pointer"
         onClick={() => navigate("/vinyl/" + vinyl.id)}
         alt="Vinyl Cover"
         draggable="false"
       />
 
       <h4
-        className="text-center hover_pointer m-0 pt-2 w-100 h-100"
+        className="text-center hover-pointer m-0 pt-2 w-100 h-100"
         onClick={() => navigate("/vinyl/" + vinyl.id)}
       >
         {vinyl.name}
       </h4>
 
       <p
-        className="fs-5 text-center hover_pointer m-0 pt-2 w-100"
+        className="fs-5 text-center hover-pointer m-0 pt-2 w-100"
         onClick={() => navigate("/vinyl/" + vinyl.id)}
       >
         {vinyl.releaseYear}

@@ -28,7 +28,7 @@ export default function TextToCopy({ text }) {
   return (
     <p
       ref={emailRef}
-      className="d-inline-block m-0 hover_pointer hover_underline"
+      className="d-inline-block m-0 hover-pointer hover-underline"
       onClick={handleCopy}
     >
       {text}

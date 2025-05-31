@@ -42,7 +42,7 @@ export default function ImageCarousel({ images }) {
               <img
                 src={image || "/assets/img/Vinyl.png"} // Fallback image
                 alt="Vinyl Image"
-                className="hover_pointer"
+                className="hover-pointer"
                 draggable="false"
               />
             </button>
@@ -58,7 +58,7 @@ export default function ImageCarousel({ images }) {
             <img
               src={"/assets/img/Vinyl.png"}
               alt="Vinyl Image"
-              className="hover_pointer"
+              className="hover-pointer"
               draggable="false"
             />
           </button>
