@@ -18,12 +18,15 @@ export default function ArtistDetailsPage() {
 
   return artist ? (
     <div className="container mb-5">
-      <Link
-        to="/artist"
-        className="reset-a text-primary hover-underline fs-2 fw-semibold"
+      <button
+        className="btn btn-primary fs-4 fw-semibold"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(-1);
+        }}
       >
-        ← Back to Artist List
-      </Link>
+        ← Return to previous page
+      </button>
 
       {/* Image and Bio */}
       <div className="row align-items-center mb-5 mt-3">

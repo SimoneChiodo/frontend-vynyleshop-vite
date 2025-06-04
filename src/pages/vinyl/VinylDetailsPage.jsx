@@ -22,12 +22,15 @@ export default function VinylDetailsPage() {
     <>
       {vinyl ? (
         <div className="container vinyl-show">
-          <Link
-            to="/vinyl"
-            className="reset-a text-primary hover-underline fs-2 fw-semibold"
+          <button
+            className="btn btn-primary fs-4 fw-semibold"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(-1);
+            }}
           >
-            ← Back to Vinyl List
-          </Link>
+            ← Return to previous page
+          </button>
 
           <div className="vinyl-image-description d-flex flex-column flex-lg-row mt-3">
             <div className="img-container d-flex justify-content-center">
