@@ -1,7 +1,7 @@
 export default function ImageCarousel({ images }) {
   return (
     <div id="carouselIndicators" className="carousel slide">
-      <div className="carousel-inner">
+      <div className="carousel-inner ratio ratio-1x1">
         {images.length > 0 ? (
           images.map((image, index) => (
             <div
@@ -37,7 +37,7 @@ export default function ImageCarousel({ images }) {
               data-bs-slide-to={index}
               aria-current={index === 0 ? "true" : undefined}
               aria-label={`Slide ${index + 1}`}
-              className={index === 0 ? "active" : ""}
+              className={index === 0 ? "active" : "my-auto"}
             >
               <img
                 src={image || "/assets/img/Vinyl.png"} // Fallback image

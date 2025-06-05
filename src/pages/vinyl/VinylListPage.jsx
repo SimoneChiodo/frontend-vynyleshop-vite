@@ -26,7 +26,7 @@ export default function VinylListPage() {
     fetchFilteredVinyls(
       filters,
       replace ? null : lastId,
-      12,
+      8,
       replace ? [] : vinylList,
       setVinylList,
       setLastId,

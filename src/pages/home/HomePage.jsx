@@ -17,7 +17,7 @@ export default function HomePage() {
   const [randomArtistList, setRandomArtistList] = useState([]);
 
   useEffect(() => {
-    fetchLatestVinyls(8, [], setVinylList, navigate);
+    fetchLatestVinyls(4, [], setVinylList, navigate);
     fetchRandomVinyls(1, [], setRandomVinylList, navigate);
     fetchRandomArtists(1, [], setRandomArtistList, navigate);
   }, []);
