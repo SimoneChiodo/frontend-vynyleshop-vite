@@ -41,13 +41,13 @@ export default function HomePage() {
       {/* LAST CREATED 8 VYNILS */}
       <section id="news">
         <div className="container">
-          <h2 className="text-center pt-4 pb-2">New Vinyls</h2>
+          <h2 className="text-center pt-4 pb-2">Greatest vinyls</h2>
           <VinylList vinylList={vinylList} />
         </div>
       </section>
 
       {/* VINYL RANDOM */}
-      <h2 className="text-center mb-3 mt-5">Random Record Reveal</h2>
+      <h2 className="text-center mb-3 mt-5">Special vinyl</h2>
       <section id="vinyl-random" className="mb-5 pt-4 pb-5">
         <div className="container text-white d-flex flex-column justify-content-center">
           <img
@@ -109,7 +109,7 @@ export default function HomePage() {
       </section>
 
       {/* ARTIST RANDOM */}
-      <h2 className="text-center mb-3 mt-5">Take a look at this artist</h2>
+      <h2 className="text-center mb-3 mt-5">Special artist</h2>
       <section id="artist-random" className="mb-5 py-5">
         <div className="container text-white d-flex flex-column justify-content-center">
           <img
