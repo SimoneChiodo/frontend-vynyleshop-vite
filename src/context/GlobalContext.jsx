@@ -12,8 +12,6 @@ export const GlobalProvider = ({ children }) => {
     if (!res.ok) {
       // Error 404 - Page Not Found
       if (res.status === 404) navigate("/404");
-      // Error 500 - Internal Server Error
-      if (res.status === 500) navigate("/maintenance");
     }
   };
 
@@ -73,8 +71,7 @@ export const GlobalProvider = ({ children }) => {
         }
       })
       .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
+        navigate("/404");
       });
   };
 
@@ -106,54 +103,7 @@ export const GlobalProvider = ({ children }) => {
         setHasMore(data.length > 0);
       })
       .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
-      });
-  };
-
-  // GET RANDOM N VINYLS
-  const fetchRandomVinyls = (limit, vinyls, setVinyls, navigate) => {
-    const params = new URLSearchParams();
-
-    // Number of vinyls
-    params.append("limit", limit);
-
-    fetch(`${VITE_BACKEND_API_URL}/vinyl/random?${params.toString()}`)
-      .then((res) => {
-        checkStatusError(res, navigate);
-        return res.json();
-      })
-      .then((data) => {
-        // Keep the old vinyls and add the new ones
-        const newVinyls = [...vinyls, ...data];
-        setVinyls(newVinyls);
-      })
-      .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
-      });
-  };
-
-  // GET LAST CREATED N VINYLS
-  const fetchLatestVinyls = (limit, vinyls, setVinyls, navigate) => {
-    const params = new URLSearchParams();
-
-    // Number of vinyls
-    params.append("limit", limit);
-
-    fetch(`${VITE_BACKEND_API_URL}/vinyl/latest?${params.toString()}`)
-      .then((res) => {
-        checkStatusError(res, navigate);
-        return res.json();
-      })
-      .then((data) => {
-        // Keep the old vinyls and add the new ones
-        const newVinyls = [...vinyls, ...data];
-        setVinyls(newVinyls);
-      })
-      .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
+        navigate("/404");
       });
   };
 
@@ -169,8 +119,42 @@ export const GlobalProvider = ({ children }) => {
         setVinyl(data);
       })
       .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
+        navigate("/404");
+      });
+  };
+
+  // GET RANDOM VINYLS
+  const fetchRandomVinyls = (size, setVinyls, navigate) => {
+    const params = new URLSearchParams();
+
+    // Number of vinyls
+    params.append("limit", size);
+
+    fetch(`${VITE_BACKEND_API_URL}/vinyl/randoms?${params.toString()}`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        setVinyls(data);
+      })
+      .catch(() => {
+        navigate("/404");
+      });
+  };
+
+  // GET RANDOM VINYL
+  const fetchRandomVinyl = (setVinyl, navigate) => {
+    fetch(`${VITE_BACKEND_API_URL}/vinyl/random`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        setVinyl(data);
+      })
+      .catch(() => {
+        navigate("/404");
       });
   };
 
@@ -225,8 +209,7 @@ export const GlobalProvider = ({ children }) => {
         }
       })
       .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
+        navigate("/404");
       });
   };
 
@@ -253,31 +236,7 @@ export const GlobalProvider = ({ children }) => {
         setHasMore(data.length > 0);
       })
       .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
-      });
-  };
-
-  // GET RANDOM N ARTISTS
-  const fetchRandomArtists = (limit, artists, setArtists, navigate) => {
-    const params = new URLSearchParams();
-
-    // Number of artists
-    params.append("limit", limit);
-
-    fetch(`${VITE_BACKEND_API_URL}/artist/random?${params.toString()}`)
-      .then((res) => {
-        checkStatusError(res, navigate);
-        return res.json();
-      })
-      .then((data) => {
-        // Keep the old artists and add the new ones
-        const newArtists = [...artists, ...data];
-        setArtists(newArtists);
-      })
-      .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
+        navigate("/404");
       });
   };
 
@@ -293,8 +252,22 @@ export const GlobalProvider = ({ children }) => {
         setArtist(data);
       })
       .catch(() => {
-        // Servers Offline
-        navigate("/maintenance");
+        navigate("/404");
+      });
+  };
+
+  // GET RANDOM ARTIST
+  const fetchRandomArtist = (setArtist, navigate) => {
+    fetch(`${VITE_BACKEND_API_URL}/artist/random`)
+      .then((res) => {
+        checkStatusError(res, navigate);
+        return res.json();
+      })
+      .then((data) => {
+        setArtist(data);
+      })
+      .catch(() => {
+        navigate("/404");
       });
   };
 
@@ -303,13 +276,13 @@ export const GlobalProvider = ({ children }) => {
       value={{
         // Vynils fetch
         fetchFilteredVinyls,
-        fetchRandomVinyls,
-        fetchLatestVinyls,
         fetchVinyl,
+        fetchRandomVinyls,
+        fetchRandomVinyl,
         // Artists fetch
         fetchFilteredArtists,
-        fetchRandomArtists,
         fetchArtist,
+        fetchRandomArtist,
       }}
     >
       {children}

@@ -9,17 +9,17 @@ import VinylList from "../../components/VinylList";
 import TripAdvisorReview from "../../components/TripAdvisorReview";
 
 export default function HomePage() {
-  const { fetchLatestVinyls, fetchRandomVinyls, fetchRandomArtists } =
+  const { fetchRandomVinyls, fetchRandomVinyl, fetchRandomArtist } =
     useGlobalContext();
   const navigate = useNavigate();
   const [vinylList, setVinylList] = useState([]);
-  const [randomVinylList, setRandomVinylList] = useState([]);
-  const [randomArtistList, setRandomArtistList] = useState([]);
+  const [randomVinyl, setRandomVinyl] = useState([]);
+  const [randomArtist, setRandomArtist] = useState([]);
 
   useEffect(() => {
-    fetchLatestVinyls(4, [], setVinylList, navigate);
-    fetchRandomVinyls(1, [], setRandomVinylList, navigate);
-    fetchRandomArtists(1, [], setRandomArtistList, navigate);
+    fetchRandomVinyls(4, setVinylList, navigate);
+    fetchRandomVinyl(setRandomVinyl);
+    fetchRandomArtist(setRandomArtist);
   }, []);
 
   return (
@@ -58,19 +58,19 @@ export default function HomePage() {
           />
 
           <h2 className="rem5 text-max-2-lines fw-semibold m-0">
-            {randomVinylList?.[0]?.name}
+            {randomVinyl.name}
           </h2>
           <div className="row row-cols-1 row-cols-md-2">
             <div className="col">
               <span className="rem4 fw-normal me-3">by</span>
               <h2 className="rem5 fw-semibold d-inline">
-                {randomVinylList?.[0]?.artistName}
+                {randomVinyl.artistName}
               </h2>
               <h2 className="rem3">Cover:</h2>
               <img
                 src={
-                  randomVinylList?.[0]?.images?.length > 0
-                    ? randomVinylList?.[0]?.images[0]
+                  randomVinyl.images?.length > 0
+                    ? randomVinyl.images[0]
                     : "/assets/img/Vinyl.png"
                 }
                 className="d-block w-100 w-md-50 px-2 vinyl-random-cover"
@@ -80,26 +80,25 @@ export default function HomePage() {
             </div>
             <div className="col mt-2 mt-md-0 pt-md-4">
               <p className="fs-3 text-center text-md-start">
-                Discover "{randomVinylList?.[0]?.name}", a{" "}
-                {randomVinylList?.[0]?.genre} gem by{" "}
+                Discover "{randomVinyl.name}", a {randomVinyl.genre} gem by{" "}
                 <Link
-                  to={"/artist/" + randomVinylList?.[0]?.artistId}
+                  to={"/artist/" + randomVinyl.artistId}
                   className="reset-a hover-underline fw-semibold"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {randomVinylList?.[0]?.artistName}
+                  {randomVinyl.artistName}
                 </Link>
-                , released in {randomVinylList?.[0]?.releaseYear}. This{" "}
-                {randomVinylList?.[0]?.format} LP edition includes{" "}
-                {(randomVinylList?.[0]?.sideone?.length || 0) +
-                  (randomVinylList?.[0]?.sidetwo?.length || 0)}{" "}
-                tracks and was brought to life by {randomVinylList?.[0]?.label}{" "}
-                in its {randomVinylList?.[0]?.edition} form.
+                , released in {randomVinyl.releaseYear}. This{" "}
+                {randomVinyl.format} LP edition includes{" "}
+                {(randomVinyl.sideone?.length || 0) +
+                  (randomVinyl.sidetwo?.length || 0)}{" "}
+                tracks and was brought to life by {randomVinyl.label} in its{" "}
+                {randomVinyl.edition} form.
               </p>
               <div className="d-flex justify-content-center justify-content-md-start">
                 <button
                   className="btn btn-primary btn-lg fs-3 px-4 py-3 mt-2 ms-1"
-                  onClick={() => navigate("/vinyl/" + randomVinylList?.[0]?.id)}
+                  onClick={() => navigate("/vinyl/" + randomVinyl.id)}
                 >
                   Discover vinyl
                 </button>
@@ -121,25 +120,18 @@ export default function HomePage() {
           />
 
           <div className="artist-card d-flex flex-column flex-lg-row align-items-center gap-4">
-            <Link
-              to={`/artist/${randomArtistList?.[0]?.id}`}
-              className="reset-a w-md-55"
-            >
+            <Link to={`/artist/${randomArtist.id}`} className="reset-a w-md-55">
               <img
-                src={
-                  randomArtistList?.[0]?.images?.[0] || "assets/img/Vinyl.png"
-                } // Fallback image
-                alt={`Foto di ${randomArtistList?.[0]?.name}`}
+                src={randomArtist.images?.[0] || "assets/img/Vinyl.png"} // Fallback image
+                alt={`Foto di ${randomArtist.name}`}
                 className="artist-photo bg-white img-fluid"
               />
             </Link>
             <div
               className={`artist-bio text-center text-md-start w-md-45 fs-4`}
             >
-              <h4 className="rem5">{randomArtistList?.[0]?.name}</h4>
-              <p>
-                {randomArtistList?.[0]?.bio || "Biografia non disponibile."}
-              </p>
+              <h4 className="rem5">{randomArtist.name}</h4>
+              <p>{randomArtist.bio || "Biografia non disponibile."}</p>
             </div>
           </div>
         </div>

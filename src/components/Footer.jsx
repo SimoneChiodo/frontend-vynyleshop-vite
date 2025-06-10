@@ -45,6 +45,7 @@ export default function Footer() {
               src="/assets/img/Vinyl.png"
               alt="Vinyl"
               className="rotate w-50 mb-3"
+              draggable="false"
             />
 
             <nav className="d-flex justify-content-between align-items-center">

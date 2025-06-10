@@ -14,7 +14,6 @@ import ArtistListPage from "./pages/artist/ArtistListPage";
 import ArtistDetailsPage from "./pages/artist/ArtistDetailsPage";
 
 // Special Pages
-import Maintenance from "./pages/errors/Maintenance";
 import Error404 from "./pages/errors/error404";
 
 function App() {
@@ -30,8 +29,6 @@ function App() {
               <Route path="/artist" element={<ArtistListPage />}></Route>
               <Route path="/artist/:id" element={<ArtistDetailsPage />}></Route>
 
-              {/* Maintenance */}
-              <Route path="/maintenance" element={<Maintenance />} />
               {/* Error 404 */}
               <Route path="*" element={<Error404 />} />
             </Route>
