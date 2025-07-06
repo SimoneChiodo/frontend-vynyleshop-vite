@@ -99,11 +99,13 @@ export default function ArtistListPage() {
               to={`/artist/${artist.id}`}
               className="artist-photo-container reset-a flex-grow-1"
             >
-              <img
-                src={artist.images?.[0] || "assets/img/Vinyl.png"} // Fallback image
-                alt={`Foto di ${artist.name}`}
-                className="artist-photo img-fluid"
-              />
+              <div className="w-100 d-flex justify-content-center">
+                <img
+                  src={artist.images?.[0] || "assets/img/Vinyl.png"} // Fallback image
+                  alt={`Foto di ${artist.name}`}
+                  className="artist-photo img-fluid"
+                />
+              </div>
             </Link>
             <div className={`artist-bio text-center text-lg-start flex-grow-1`}>
               <h4 className="fs-2">{artist.name}</h4>

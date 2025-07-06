@@ -244,8 +244,9 @@
 
 .artist-photo {
   border: 20px solid var(--artist-image-border-color);
-  width: 100%;
   transition: all 0.3s ease-in-out;
+  object-fit: contain;
+  max-height: 500px;
 }
 .artist-photo:hover {
   rotate: 2deg;

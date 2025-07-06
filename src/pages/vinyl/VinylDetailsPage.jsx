@@ -61,6 +61,7 @@ export default function VinylDetailsPage() {
                   <li>Color: {vinyl.color}</li>
                   <li>Edition: {vinyl.edition}</li>
                   <li>Label: {vinyl.label}</li>
+                  <li>Country: {vinyl.country}</li>
                 </ul>
               </div>
 
