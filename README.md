@@ -1,5 +1,11 @@
-# Progetto: Gestione dati con backoffice Spring e frontend React
+# Progetto React: Frontend VynyleShop
+
+### Nome repository backend: backend-vynyleshop-spring
 
 ## Descrizione
 
-Il progetto consiste nella realizzazione di un’applicazione completa composta da un backoffice sviluppato in Spring con autenticazione gestita tramite Spring Security, e un frontend in React per la visualizzazione dei dati. Nel backoffice l’utente autenticato può gestire un’entità a scelta (come videogiochi, film, album musicali, libri o fumetti) implementando tutte le operazioni CRUD, oltre ad almeno una seconda entità correlata con una relazione uno-a-molti o molti-a-molti (ad esempio videogiochi e console o film e generi). Il backoffice è realizzato con Thymeleaf e può includere logiche frontend con JavaScript. Il frontend React, rivolto agli utenti non autenticati, consente di visualizzare liste e dettagli degli elementi e delle loro informazioni correlate, comunicando con il backend tramite API REST. L’obiettivo è creare un sistema integrato e interattivo che permetta una gestione completa dei dati e una fruizione chiara e funzionale delle informazioni.
+Il progetto consiste nello sviluppo di un sistema completo per la vendita di dischi in vinile, composto da due parti principali:
+
+Backoffice in Spring Boot: con autenticazione tramite Spring Security, permette agli amministratori di gestire prodotti (dischi) e artisti con operazioni CRUD complete. Le entità sono correlate tra loro tramite relazioni realistiche (ad esempio, un disco associato a uno o più artisti). L’interfaccia di gestione è realizzata con Thymeleaf e arricchita da Bootstrap e JavaScript per migliorare l’esperienza utente.
+
+Frontend React: applicazione dedicata agli utenti finali (guest) che consente di esplorare il catalogo, filtrare e cercare dischi e artisti, visualizzare dettagli approfonditi con un’interfaccia reattiva e moderna. La comunicazione con il backend avviene tramite API REST, garantendo un flusso dati fluido e aggiornato.
