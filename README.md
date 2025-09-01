@@ -1,6 +1,6 @@
 # Progetto React: Frontend VynyleShop
 
-### Nome repository backend: backend-vynyleshop-spring
+### Repository backend: [backend-vynyleshop-spring](https://github.com/SimoneChiodo/backend-vynyleshop-spring.git)
 
 ## Descrizione
 
