@@ -2,10 +2,33 @@
 
 ### Repository backend: [backend-vynyleshop-spring](https://github.com/SimoneChiodo/backend-vynyleshop-spring.git)
 
-## Descrizione
+## Descrizione  
 
-Il progetto consiste nello sviluppo di un sistema completo per la vendita di dischi in vinile, composto da due parti principali:
+**VynyleShop** è un sito web dedicato alla vendita di dischi in vinile, pensato per offrire un’esperienza di navigazione semplice e moderna.  
+Il **frontend** è stato sviluppato in **React** e utilizza **Bootstrap** per lo stile e la responsività delle pagine.  
 
-Backoffice in Spring Boot: con autenticazione tramite Spring Security, permette agli amministratori di gestire prodotti (dischi) e artisti con operazioni CRUD complete. Le entità sono correlate tra loro tramite relazioni realistiche (ad esempio, un disco associato a uno o più artisti). L’interfaccia di gestione è realizzata con Thymeleaf e arricchita da Bootstrap e JavaScript per migliorare l’esperienza utente.
+## 🌍 Funzionalità principali  
+- **Homepage**  
+  - Sezione *Greatest Vinyls* con vinili mostrati in modo dinamico  
+  - Sezione *Special Vinyl* con i dettagli di un vinile selezionato casualmente  
+  - Sezione *Special Artist* con presentazione di un artista casuale  
+  - Sezione *What our customers say* con recensioni fittizie in stile TripAdvisor
+- **Navbar**  
+  - Link alle principali pagine del sito  
+  - Pulsanti fittizi per carrello e login  
+- **Vinyl List**  
+  - Visualizzazione dei vinili con caricamento progressivo (*load more*)  
+  - Pulsante fittizio per aggiungere i vinili al carrello  
+  - Filtri per raffinare la ricerca  
+- **Artist List**  
+  - Card dedicate a ciascun artista con informazioni di base  
+- **Pagine dettaglio**  
+  - **Vinile**: carosello immagini e dettagli completi  
+  - **Artista**: immagine, descrizione e discografia collegata  
+- **Footer**  
+  - Sezioni dedicate a navigazione, social e contatti  
+  - Policy in evidenza nella parte inferiore  
 
-Frontend React: applicazione dedicata agli utenti finali (guest) che consente di esplorare il catalogo, filtrare e cercare dischi e artisti, visualizzare dettagli approfonditi con un’interfaccia reattiva e moderna. La comunicazione con il backend avviene tramite API REST, garantendo un flusso dati fluido e aggiornato.
+## 🛠️ Tecnologie utilizzate  
+- **React**: scelto per realizzare interfacce dinamiche e componenti riutilizzabili.  
+- **Bootstrap**: scelto per garantire un layout responsive e uno stile moderno con componenti pronti all’uso.  
